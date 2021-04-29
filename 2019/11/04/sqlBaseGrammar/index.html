@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="oracle,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="前言之所以写这篇基础语句文章，主要是因为前段时间在接触一些比较复杂的数据语法操作时，发现自己对这方面的知识还是有些欠缺的，希望这篇初级语句文章对自己以后的职业生涯有所帮助。 本文摘自：https://juejin.im/entry/591427a22f301e006b861726   insert into 语句insert into用于向数据表中插入数据。对于标准的SQL语句而言，每次只能插入一">
+<meta name="keywords" content="oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql中基本的语句用法">
+<meta property="og:url" content="http://17363959606.github.io/2019/11/04/sqlBaseGrammar/index.html">
+<meta property="og:site_name" content="静静同学的博客">
+<meta property="og:description" content="前言之所以写这篇基础语句文章，主要是因为前段时间在接触一些比较复杂的数据语法操作时，发现自己对这方面的知识还是有些欠缺的，希望这篇初级语句文章对自己以后的职业生涯有所帮助。 本文摘自：https://juejin.im/entry/591427a22f301e006b861726   insert into 语句insert into用于向数据表中插入数据。对于标准的SQL语句而言，每次只能插入一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/5/11/4e1835629a450fcc031650064c0615c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/5/11/9daf6f15a5a02cfe03d35e8d9bba16c9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/5/11/cbe16fd3427362312c4dd02d73df3da2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/5/11/159067a733900a114f962018fbf643e3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/5/11/0bbf28434d506bd9a6bc2c4979a2d131?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="http://17363959606.github.io/2019/11/04/sqlBaseGrammar/0.png">
+<meta property="og:image" content="http://17363959606.github.io/2019/11/04/sqlBaseGrammar/1.png">
+<meta property="og:updated_time" content="2020-07-22T09:20:49.799Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql中基本的语句用法">
+<meta name="twitter:description" content="前言之所以写这篇基础语句文章，主要是因为前段时间在接触一些比较复杂的数据语法操作时，发现自己对这方面的知识还是有些欠缺的，希望这篇初级语句文章对自己以后的职业生涯有所帮助。 本文摘自：https://juejin.im/entry/591427a22f301e006b861726   insert into 语句insert into用于向数据表中插入数据。对于标准的SQL语句而言，每次只能插入一">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/5/11/4e1835629a450fcc031650064c0615c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17363959606.github.io/2019/11/04/sqlBaseGrammar/">
+
+
+
+
+
+  <title>sql中基本的语句用法 | 静静同学的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">静静同学的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/11/04/sqlBaseGrammar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Je t 'aime">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="静静同学的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sql中基本的语句用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T11:40:46+08:00">
+                2019-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之所以写这篇基础语句文章，主要是因为前段时间在接触一些比较复杂的数据语法操作时，发现自己对这方面的知识还是有些欠缺的，希望这篇初级语句文章对自己以后的职业生涯有所帮助。</p>
+<p>本文摘自：<a href="https://juejin.im/entry/591427a22f301e006b861726" target="_blank" rel="noopener">https://juejin.im/entry/591427a22f301e006b861726 </a> </p>
+<h3 id="insert-into-语句"><a href="#insert-into-语句" class="headerlink" title="insert into 语句"></a>insert into 语句</h3><p>insert into用于向数据表中插入数据。对于标准的SQL语句而言，每次只能插入一条记录。insert into语法格式如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">insert into tableName (column,clumn,..)</span><br><span class="line"></span><br><span class="line">values(value,value,..)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>执行插入操作时，表名后可以用括号列出所有需要插入值的列名，而value后用括号列出对应需要插入的值。 例如： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">insert into tableName value (&apos;Vincent&apos;); </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果不想在表后用括号列出所有列，则需要为所有列指定值；如果某列的值不能确定，则为该列分配一个null值 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">insert into tableName # 使用null代替主键列的值 values(null, &apos;Pigeau&apos;); </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然而此时，Pigeau记录的主键列的值是2，而不是SQL语句插入的null，因为该主键列是自增长，系统会自动为该列分配值</p>
+<p>根据外键约束规则：外键列里的值必须是被参照列里已有的值，所以向从表中插入记录之前，通常应该先向主表中插入记录，否则从表记录的外键列只能为null。现向从表student_table2中插入记录</p>
+<p>在一些特殊的情况下，我们可以使用带子查询的插入语句，带子查询的插入语句可以一次插入多条记录 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">insert into tableName(column1)</span><br><span class="line"></span><br><span class="line">`--使用子查询的值来插入`</span><br><span class="line"></span><br><span class="line">select column1 from tableName </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h3><p>update语句用于修改数据表的记录，每次可以修改多条记录，通过使用where子句限定修改哪些记录。没有where子句则意味着where表达式的值总是true，即该表的所有记录都会被修改，update语句的语法格式如下: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">update tableName set column = value,column2 = value2,..</span><br><span class="line"></span><br><span class="line">[where condition]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="delete-from-语句"><a href="#delete-from-语句" class="headerlink" title="delete from 语句"></a>delete from 语句</h3><p>delete from语句用于删除指定数据表的记录。使用delete from语句删除时不需要指定列名，因为总是整行地删除。使用delete from语句可以一次删除多行，删除哪些行采用where字句限定，只删除满足where条件的记录。没有where字句限定将会把表里的全部记录删除 </p>
+<p>delete from语句的语法格式如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">delete from tableName </span><br><span class="line"></span><br><span class="line">[where condition]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当主表记录被从表记录参照时，主表记录不能被删除，只有先将从表中参照主表记录的所有记录全部删除后，才可删除主表记录。还有一种情况，定义外键约束时定义了主表记录和从表记录之间的联级删除on delete cascade，或者使用on delete null用于指定当主表记录被删除时，从表中参照该记录的从表记录把外键列的值设为null </p>
+<h3 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h3><p>select语句的功能就是查询数据。select语句也是SQL语句中功能最丰富的语句，select语句不仅可以执行单表查询，而且可以执行多表连接查询，还可以进行子查询，select语句用于从一个或多个数据表中选出特定行、特定列的交集 </p>
+<p>单表查询的select语句的语法如下: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select column,column2 from tableName</span><br><span class="line"></span><br><span class="line">[where condition]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当使用select语句进行查询时，还可以在select语句中使用算术运算符(+、-、*、/)，从而形成算术表达式：使用算术表达式的规则如下</p>
+<ul>
+<li>对数值型数据列、变量、常量可以使用算术运算符(+、-、*、/) 创建表达式</li>
+<li>对日期型数据列、变量、常量可以使用部分算术运算符(+、-、)创建表达式，两个日期之间可以进行减法运算，日期和数值之间可以进行加、减运算</li>
+<li>运算符不仅可以在列和常量、变量之间进行运算，也可以在两列之间进行运算</li>
+</ul>
+<p>下面的select语句中使用了算术运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select columnId + 5 from tableName</span><br><span class="line"></span><br><span class="line">--查询出teacher_table表中teacher_id * 3 大于4的记录 </span><br><span class="line"></span><br><span class="line">select *  from teacher_table  where teacher_id * 3 &gt; 4; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>SQL语言中算术符的优先级与java语言的运算符优先级完全相同，MySQL使用concat函数来进行字符串连接运算。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--选择出teacher_name和&apos;xx&apos;字符串连接后的结果 </span><br><span class="line"></span><br><span class="line">select concat(teacher_name, &apos;xx&apos;)</span><br><span class="line"></span><br><span class="line">form tableName</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>对于MySQL而言，如果在算术表达式中使用null，将会导致整个算术表达式的返回值为null；如果在字符串连接运算符中出现null，将会导致连接后的结果也是null </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select concat(teacher_name, null)  from teacher_table; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>select默认会把所有符合条件的记录全部选出来，即使两行记录完全一样。如果想去除重复行，则可以使用distinct关键字从查询结果中清除重复行</strong>，比较下面两条SQL语句的执行结果： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--选出所有记录，包括重复行</span><br><span class="line"></span><br><span class="line">select column,column2 from tableName;</span><br><span class="line"></span><br><span class="line">--去除重复行</span><br><span class="line"></span><br><span class="line">select distinct column,column2 from tableName;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注：<strong>使用distinct去除重复行时，distinct紧跟select关键字，它的作用是去除后面字段组合的重复值，而不管对应对应记录在数据库是否重复</strong> </p>
+<p>前面已经看到了where字句的作用：可以控制只选择指定的行。因为where字句里包含的是一个条件表达式，所以可以使用&gt;、&gt;=、&lt;、&lt;=、=和&lt;&gt;等基本的比较运算符。SQL中的比较运算符不仅可以比较数值之间的大小，也可以比较字符串、日期之间的大小</p>
+<p>SQL判断两个值是否相等的比较运算符是单等号=，判断不等的运算符是&lt;&gt;；SQL中的赋值运算符不是等号，而是冒号等号(:=)</p>
+<h3 id="SQL支持的特殊比较运算符"><a href="#SQL支持的特殊比较运算符" class="headerlink" title="SQL支持的特殊比较运算符"></a>SQL支持的特殊比较运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expr1 between expr2 and expr3</td>
+<td>要求expr1 &gt;= expr2 并且 expr2 &lt;= expr3</td>
+</tr>
+<tr>
+<td>expr1 in(expr2,expr3,expr4,…)</td>
+<td>要求expr1等于后面括号里任意一个表达式的值</td>
+</tr>
+<tr>
+<td>like</td>
+<td>字符串匹配，like后的字符串支持通配符</td>
+</tr>
+<tr>
+<td>is null</td>
+<td>要求指定值等于null</td>
+</tr>
+</tbody>
+</table>
+<p>下面的SQL语句选出id大于等于2，且小于等于4的所有记录. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from tableName where id between 2 and 4;</span><br><span class="line"></span><br><span class="line">-- 选出java_teacher小于等于2，student_id大于等于2的所有记录 </span><br><span class="line"></span><br><span class="line">select * from tableName </span><br><span class="line"></span><br><span class="line">where 2 between java_teacher and student_id</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用in比较运算时，必须在in后的括号里列出一个或多个值，它要求指定列必须与in括号里任意一个值相等 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--选出id 列的值为2或4的所有记录 </span><br><span class="line"></span><br><span class="line">select * from tableName</span><br><span class="line"></span><br><span class="line">where id in (2,4);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>与之类似的是，in括号里的值既可以是常量，也可以是变量或者列名 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--选出student_id、java_teacher列的值为2的所有记录 </span><br><span class="line"></span><br><span class="line">select * from tableName</span><br><span class="line"></span><br><span class="line">where 2 in (student_id,java_teacher)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>like运算符主要用于进行模糊查询，例如，若要查询名字以“孙”开头的所有记录，这就需要用到迷糊查询，在模糊查询中需要使用like关键字。SQL语句中可以使用两个通配符：下划线(_)和百分号(%)，其中下划线可以代表一个任意的字符，百分号可以代表任意多个字符。如下SQL语句将查询出所有学生中名字以”孙”开头的学生 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from tableName</span><br><span class="line"></span><br><span class="line">where name like &apos;孙%&apos;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>下面的SQL语句将查出名字为两个字符的所有姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">select * from tableName</span><br><span class="line"></span><br><span class="line">where nale like &apos;__&apos;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在某些特殊情况下，查询的条件里需要使用下划线或百分号，不希望SQL把下划线和百分号当成通配符使用，这就需要使用转义字符，MySQL使用反斜线(/)作为转义字符 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--选出所有名字以下划线开头的学生 </span><br><span class="line"></span><br><span class="line">select * from tableName </span><br><span class="line"></span><br><span class="line">where name like &apos;/_%&apos;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>is null 用于判断某些值是否为空，判断是否为空不能用=null来判断，因为SQL中null=null返回null。如下SQL语句将选择出student_table表中student_name为null的所有记录 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from tableName</span><br><span class="line"></span><br><span class="line">where columnName is null;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果where字句后面有多个条件需要组合，SQL提供了and和or逻辑运算符来组合2个条件，并提供了not来对逻辑表达式求否，如下SQL语句将选出学生名字为2个字符，且student_id 大于3的所有记录。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from tableName </span><br><span class="line"></span><br><span class="line">select *  from student_table where student_name like &apos;__&apos; and studnent_id &gt; 3; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>下面的SQL语句将选出student_table表中姓名不以下划线开头的所有记录。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select *  from student_table</span><br><span class="line"></span><br><span class="line"> -- 使用not对where条件取否 </span><br><span class="line"></span><br><span class="line">where not student_name like &apos;/_%&apos;;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>SQL中比较运算符、逻辑运算符的优先级 </p>
+<p><strong>所有比较运算符&gt;not&gt;and&gt;or</strong></p>
+<h3 id="order-by语句"><a href="#order-by语句" class="headerlink" title="order by语句"></a>order by语句</h3><p>执行查询后的结果默认按插入顺序排序；如果需要在查询结果按某列值的大小进行排序，则可以使用order by字句</p>
+<p>ORDER BY 语句用于根据指定的列对结果集进行排序。ORDER BY 语句默认按照升序对记录进行排序。如果您希望按照降序对记录进行排序，可以使用 DESC 关键字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">order by column1 [asc], column2 [desc]...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>进行排序时默认按升序排序排列，如果强制按降序排序，则需要在列后使用desc关键字(与之对应的是asc关键字，用不用该关键字的效果完全一样，因为默认是按升序排列)。上面语法中设定排序列时可采用列名、序列名和列别名。如下SQL语句选出student_table表中的所有记录，选出后按java_teacher列的升序排列。</p>
+<h3 id="数据库函数"><a href="#数据库函数" class="headerlink" title="数据库函数"></a>数据库函数</h3><p>每个数据库都会在标准的SQL基础上扩展一些函数，这些函数用于进行数据处理或复杂计算，他们通常对一组数据进行计算，得到最终需要的输出结果。函数一般都会有一个或者多个输入，这些输入被称为函数的参数，函数内部会对这些参数进行判断和计算，最终只有一个值作为返回值。函数可以出现在SQL语句中的各个位置，比较常用的位置是select之后的where子句中 </p>
+<p>根据函数对多行数据的处理方式，函数被分为单行函数和多行函数，单行函数对每行输入值单独计算，每行得到一个计算结果返回给用户；多行函数对多行输入值整体计算，最后只会得到一个结果<br><img src="https://user-gold-cdn.xitu.io/2017/5/11/4e1835629a450fcc031650064c0615c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>SQL中的函数和java语言中的方法有点相似，但SQL中的函数是独立的程序单元，也就是说，调用函数时无需使用任何类、对象作为调用者，而是直接执行函数。如下：</p>
+<p>多行函数也称为聚集函数、分组函数，主要用于完成一些统计功能，在大部分数据库中基本相同。但不同数据库中的单行函数差别非常大，MySQL中的单行函数具有如下特征</p>
+<ul>
+<li>单行函数的参数可以是变量、常数或数据列。单行函数可以接收多个参数，但只返回一个值</li>
+<li>单行函数会对每行单独起作用，每行(可能包括多个参数)返回一个结果</li>
+<li>使用单行函数可以改变参数的数据类型。单行函数支持嵌套使用，即内层函数的返回值是外层函数的参数</li>
+</ul>
+<p>MySQL的单行函数分类如图所示<br><img src="https://user-gold-cdn.xitu.io/2017/5/11/9daf6f15a5a02cfe03d35e8d9bba16c9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>MySQ数据库的数据类型大致分为数值型、字符型、和日期时间型。所以mysql分别提供了对应的函数。转换函数主要负责完成类型转换，其他函数又大致分为如下几类</p>
+<ul>
+<li>位函数</li>
+<li>流程控制函数</li>
+<li>加密解密函数</li>
+<li>信息函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--选出teacher_table表中teacher_name列的字符长度</span><br><span class="line"></span><br><span class="line">select char_length(teacher_name)  from teacher_table;  </span><br><span class="line"></span><br><span class="line">--计算teacher_name列的字符长度的sin值 </span><br><span class="line"></span><br><span class="line">select sin(char_length(teacher_name))  from teacher_table; </span><br><span class="line"></span><br><span class="line">--为指定日期添加一定的时间，在这种用法下interval是关键字，需要一个数值还有一个单位 </span><br><span class="line"></span><br><span class="line">select DATE_ADD(&apos;1998-01-02&apos;, interval 2 MONTH); </span><br><span class="line"></span><br><span class="line">--获取当前日期 </span><br><span class="line"></span><br><span class="line">select CURDATE(); </span><br><span class="line"></span><br><span class="line">--获取当前时间 </span><br><span class="line"></span><br><span class="line">select curtime(); </span><br><span class="line"></span><br><span class="line">--下面的MD5是MD5加密函数 </span><br><span class="line"></span><br><span class="line">select MD5(&apos;testing&apos;); </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>MySQL提供了如下几个处理null的函数</p>
+<ul>
+<li>ifnull(expr1, expr2)：如果expr1为null，则返回expr2，否则返回expr1</li>
+<li>nullif(expr1, expr2)：如果expr1和expr2相等，则返回null，否则返回expr1</li>
+<li>if(expr1, expr2, expr3)：有点类似于?:三目运算符，如果expr1为true，不等于0，且不等于null，则返回expr2，否则返回expr3</li>
+<li>isnull(expr1)：判断expr1是否为null，如果为null则返回true，否则返回false</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-- 如果student_name列为null，则返回&apos;没有名字&apos; </span><br><span class="line"></span><br><span class="line">select ifnull(student_name, &apos;没有名字&apos;) from student_table; </span><br><span class="line"></span><br><span class="line">-- 如果CTO_name列为&apos;吴局&apos;，则返回null </span><br><span class="line"></span><br><span class="line">select nullif(CTO_name, &apos;吴局&apos;) from CTO_table; </span><br><span class="line"></span><br><span class="line">--如果student_name列为null，则返回&apos;没有名字&apos;，否则返回&apos;有名字&apos; </span><br><span class="line"></span><br><span class="line">select if(isnull(student_name), &apos;没有名字&apos;, &apos;有名字&apos;) from student_table;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="case函数"><a href="#case函数" class="headerlink" title="case函数"></a>case函数</h3><p>case函数，流程控制函数。case函数有两个用法 </p>
+<p><strong>case函数第一个用法的语法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">case value</span><br><span class="line"></span><br><span class="line">when compare_calue1 then result1</span><br><span class="line"></span><br><span class="line">when compare_calue2 then result2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else result</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>case函数用value和后面的compare_value1、compare_value2、…依次进行比较，如果value和指定的compare_value1相等，则返回对应的result1，否则返回else后的result </p>
+<p><strong>case函数的第二个用法的语法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">case </span><br><span class="line"></span><br><span class="line">when condition1 then result1</span><br><span class="line"></span><br><span class="line">where condition2 then result2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else result</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>condition返回boolean值的条件表达式 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--id小于3的为初级工程师，3~6为中级工程师，其他为高级工程师 </span><br><span class="line"></span><br><span class="line">select name, case</span><br><span class="line"></span><br><span class="line">when id&lt;=3 then &apos;初级工程师 &apos;</span><br><span class="line"></span><br><span class="line">when id &lt;=6 then &apos;中级工程师 &apos;</span><br><span class="line"></span><br><span class="line">else &apos;高级工程师&apos; </span><br><span class="line"></span><br><span class="line">end </span><br><span class="line"></span><br><span class="line">from tableName;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="分组和组函数"><a href="#分组和组函数" class="headerlink" title="分组和组函数"></a>分组和组函数</h3><p>组函数也就是前面提到的多行函数，组函数是将一组作为整体计算，每组记录返回一个结果，而不是每条记录返回一个结果 </p>
+<ul>
+<li>avg([distinct|all]expr)：计算多行expr平均值，其中expr可以是变量、常量或者数据列，但其数据类型必须是数值型。使用distinct表明不计算重复值；all表明需要计算重复值</li>
+<li>count({<em>|[distinct|all] expr})：计算多行expr的总条数，其中expr可以是变量、常量或者数据列，但其数据类型必须是数值型。用星号（</em>）表示统计该表内的记录行数</li>
+<li>max(expr)：计算多行expr的最大值</li>
+<li>min(expr)：计算多行expr的最小值</li>
+<li>sum([distanct|all]expr)：计算多行expr的总和</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-- 计算student_table表中的记录条数</span><br><span class="line">select count(*)</span><br><span class="line"></span><br><span class="line">-- 计算java_teacher列总共有多少个值</span><br><span class="line">select count(distinct java_teacher)</span><br><span class="line"></span><br><span class="line">-- 统计所有student_id 的总和</span><br><span class="line">select sum(student_id)</span><br><span class="line"></span><br><span class="line">-- 计算的结果是20 * 记录的行数</span><br><span class="line">select sum(20)</span><br><span class="line"></span><br><span class="line">-- 选出student_table表中student_id最大的值</span><br><span class="line">select max(student_id)</span><br><span class="line"></span><br><span class="line">-- 选出student_table表中student_id最小的值</span><br><span class="line">select min(student_id)</span><br><span class="line"></span><br><span class="line">-- 因为sum里的expr是常量23，所以每行的值都相同</span><br><span class="line">-- 使用distinct强制不计算重复值，所以下面计算结果为23</span><br><span class="line">select sum(distinct 23)</span><br><span class="line"></span><br><span class="line">-- 使用count统计记录行数，null不会被计算在内</span><br><span class="line">select count(student_name)</span><br><span class="line"></span><br><span class="line">-- 对于可能出现null的列，可以使用ifnull函数来处理该列</span><br><span class="line">-- 计算java_teacher列所有记录的平均值</span><br><span class="line">select avg(ifnull(java_teacher, 0))</span><br><span class="line"></span><br><span class="line">from student_table;</span><br><span class="line"></span><br><span class="line">-- distinct和*不可同时使用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="group-by语句"><a href="#group-by语句" class="headerlink" title="group by语句"></a>group by语句</h4><p>组函数会把所有记录当成一组，为了对记录进行显式分组，可以在select语句后使用group by子句后通常跟一个或多个列名，表明查询结果根据一列或多列进行分组——当一列或多列组合的值完全相同时，系统会把这些记录当成一组 </p>
+<p><strong>sql group by 语法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select column1 from tableName group by column1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果对多列进行分组，则要求多列的值完全相同才会被当成一组 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select count(*) from tableName</span><br><span class="line"></span><br><span class="line">-- 将column、column1两列的值完全相同时才会被当成一组 </span><br><span class="line"></span><br><span class="line">group by column,column1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="having语句"><a href="#having语句" class="headerlink" title="having语句"></a>having语句</h3><p>如果需要对分组进行过滤，则应该使用having子句，having子句后面也是一个条件表达式，只有满足该条件表达式的分组才会被选出来。having子句和where子句非常容易混淆，它们都有过滤功能，但它们有如下区别</p>
+<ul>
+<li>不能在where子句中过滤组，where子句仅用于过滤行。过滤组必须使用having子句</li>
+<li>不能在where子句中使用组函数，having子句才可使用组函数</li>
+</ul>
+<p><strong>sql having 语法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select column,column1 from tableName</span><br><span class="line"></span><br><span class="line">where [contidtion]</span><br><span class="line"></span><br><span class="line">group by column having [operator value]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="多表连接查询"><a href="#多表连接查询" class="headerlink" title="多表连接查询"></a>多表连接查询</h3><p>以下book与student数据表： </p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/5/11/cbe16fd3427362312c4dd02d73df3da2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"><img src="https://user-gold-cdn.xitu.io/2017/5/11/159067a733900a114f962018fbf643e3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"> </p>
+<p><strong>交叉连接（cross join）</strong></p>
+<p>交叉连接无须任何连接条件。返回左表中的所有行，左表中的每一行与右表中的所有行组合。交叉联接也称作笛卡尔积 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from book as a cross join stu as b</span><br><span class="line"></span><br><span class="line">order by a.id</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2017/5/11/0bbf28434d506bd9a6bc2c4979a2d131?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"> </p>
+<p><strong>自然连接</strong></p>
+<p>自然连接会以两个表中的同名列作为连接条件；如果两个表没有同名列，则自然连接与交叉连接效果完全一样——因为没有连接条件。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select s.*,teacher_name from student_table s</span><br><span class="line"></span><br><span class="line">natural join teacher_table t;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在连接条件中使用等于(=)运算符比较被连接列的列值，但它使用选择列表指出查询结果集合中所包括的列，并删除连接表中的重复列 </p>
+<p><strong>使用using子句的连接</strong></p>
+<p>using子句可以指定一列或多列，用于显示指定两个表中的同名列作为连接条件。假设两个表中有超过一列的同名列，如果使用natural join，则会把所有的同名列当成连接条件；使用using子句，就可显示指定使用哪些同名列作为连接条件 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select s.*,teacher_name from student_table s</span><br><span class="line"></span><br><span class="line">join teacher_table t using(teacher id)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>使用on子句的连接</strong></p>
+<p>最常用的的连接方式，而且每个on子句只指定一个连接条件。这意味着：如果需要进行N表连接，则需要有N-1个join…on对 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select s.*, teacher_name from student_table s</span><br><span class="line"></span><br><span class="line">join teacher_table t</span><br><span class="line"></span><br><span class="line">on s.java_teacher = t.teacher_id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="全外连接或者左、右外链接"><a href="#全外连接或者左、右外链接" class="headerlink" title="全外连接或者左、右外链接"></a>全外连接或者左、右外链接</h3><p>这三种外连接分别使用left[outer]join、right[outer]join和full[outer]join，这三种外连接的连接条件一样通过on子句来指定，既可以是等值连接条件，也可以是非等值连接条件</p>
+<p><strong>左联接</strong></p>
+<p>是以左表为基准，将a.stuid = b.stuid的数据进行连接，然后将左表没有的对应项显示，右表的列为null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from book as a</span><br><span class="line"></span><br><span class="line">left join stu as b </span><br><span class="line"></span><br><span class="line">on a.id = b. id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>右联接和左联接一样：right join on</p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p>子查询就是在查询语句中嵌套另一个查询，子查询可以支持多层嵌套。对于一个普通的查询语句而言，子查询可以出现在两个位置</p>
+<ul>
+<li>form语句后当成数据表，这种用法也被称为行内视图，因为该子查询的实质就是一个临时视图</li>
+<li>where条件后作为过滤条件的值</li>
+</ul>
+<p>使用子查询时的注意点</p>
+<ul>
+<li>子查询要用括号括起来</li>
+<li>把子查询作为数据表时（出现在from后），可为其起别名，作为前缀来限定数据列时，必须给子查询起别名</li>
+<li>把子查询作为过滤条件时，将子查询放在比较运算符的右边，可增强查询的可读性</li>
+<li>把子查询作为过滤条件时，单行子查询使用单行运算符，多行子查询使用多行运算符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select * from (select * from tableName) t </span><br><span class="line"></span><br><span class="line">where t.column &gt; 1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="listagg函数"><a href="#listagg函数" class="headerlink" title="listagg函数"></a>listagg函数</h3><p>oracle的 listagg() WITHIN GROUP () 行转列函数的使用。</p>
+<p>即将多行字段数据记录到一行字段中如图：</p>
+<img src="/2019/11/04/sqlBaseGrammar/0.png">
+<p>上图有2个相同的流水号，但它们的接口返回信息不同，现有业务需要将同一流水号下的接口返回信息组织在一起，那么就需要使用到此函数：</p>
+<img src="/2019/11/04/sqlBaseGrammar/1.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> SELECT listagg(ERROR_MSG, &apos;,&apos;) within group(order by JOB_TIME) as 接口返回信息 </span><br><span class="line">FROM table WHERE condition </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">其中：listagg(&apos;需要拼接的列名&apos;,&apos;拼接符号如：，&apos;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="根据表名定位所以在库"><a href="#根据表名定位所以在库" class="headerlink" title="根据表名定位所以在库"></a>根据表名定位所以在库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT table_schema FROM information_schema.TABLES WHERE table_name = &apos;t_sys_user&apos;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/15/rpc/" rel="next" title="何为rpc">
+                <i class="fa fa-chevron-left"></i> 何为rpc
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/12/LinuxTop/" rel="prev" title="Linux中查看各进程资源占用状况命令Top">
+                Linux中查看各进程资源占用状况命令Top <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/uploads/head.jpeg" alt="Je t 'aime">
+          <p class="site-author-name" itemprop="name">Je t 'aime</p>
+           
+              <p class="site-description motion-element" itemprop="description">知识源于沉淀</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.yl-online.top," title="forever杨" target="_blank">forever杨</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://tidyko.com/" title="Tidy" target="_blank">Tidy</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-into-语句"><span class="nav-number">2.</span> <span class="nav-text">insert into 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update语句"><span class="nav-number">3.</span> <span class="nav-text">update语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-from-语句"><span class="nav-number">4.</span> <span class="nav-text">delete from 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单表查询"><span class="nav-number">5.</span> <span class="nav-text">单表查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL支持的特殊比较运算符"><span class="nav-number">6.</span> <span class="nav-text">SQL支持的特殊比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#order-by语句"><span class="nav-number">7.</span> <span class="nav-text">order by语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库函数"><span class="nav-number">8.</span> <span class="nav-text">数据库函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case函数"><span class="nav-number">9.</span> <span class="nav-text">case函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组和组函数"><span class="nav-number">10.</span> <span class="nav-text">分组和组函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#group-by语句"><span class="nav-number">10.1.</span> <span class="nav-text">group by语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#having语句"><span class="nav-number">11.</span> <span class="nav-text">having语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多表连接查询"><span class="nav-number">12.</span> <span class="nav-text">多表连接查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全外连接或者左、右外链接"><span class="nav-number">13.</span> <span class="nav-text">全外连接或者左、右外链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">14.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listagg函数"><span class="nav-number">15.</span> <span class="nav-text">listagg函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据表名定位所以在库"><span class="nav-number">16.</span> <span class="nav-text">根据表名定位所以在库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Je t 'aime</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

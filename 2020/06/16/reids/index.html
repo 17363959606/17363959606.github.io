@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="reids,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="一：reids的基础知识1.启动redis: ./reids.server /xx/xx/redis.conf 2.检测reids是否启动成功： ./reids.cli -p 6379  (6379为redis的默认端口号)  输入Ping恢复pong表示成功。 3.redis默认是16个库，select x (x表示索引 0-15)命令切换数据库  库的索引从0开始，select 1表示切换到第">
+<meta name="keywords" content="reids">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reids">
+<meta property="og:url" content="http://17363959606.github.io/2020/06/16/reids/index.html">
+<meta property="og:site_name" content="静静同学的博客">
+<meta property="og:description" content="一：reids的基础知识1.启动redis: ./reids.server /xx/xx/redis.conf 2.检测reids是否启动成功： ./reids.cli -p 6379  (6379为redis的默认端口号)  输入Ping恢复pong表示成功。 3.redis默认是16个库，select x (x表示索引 0-15)命令切换数据库  库的索引从0开始，select 1表示切换到第">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/1.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/2.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/3.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/4.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/5.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/6.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/7.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/8.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/9.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/10.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/11.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/12.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/13.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/14.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/15.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/16.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/17.png">
+<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/18.png">
+<meta property="og:updated_time" content="2020-06-28T07:16:54.127Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reids">
+<meta name="twitter:description" content="一：reids的基础知识1.启动redis: ./reids.server /xx/xx/redis.conf 2.检测reids是否启动成功： ./reids.cli -p 6379  (6379为redis的默认端口号)  输入Ping恢复pong表示成功。 3.redis默认是16个库，select x (x表示索引 0-15)命令切换数据库  库的索引从0开始，select 1表示切换到第">
+<meta name="twitter:image" content="http://17363959606.github.io/2020/06/16/reids/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17363959606.github.io/2020/06/16/reids/">
+
+
+
+
+
+  <title>reids | 静静同学的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">静静同学的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/06/16/reids/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Je t 'aime">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="静静同学的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">reids</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-16T10:03:26+08:00">
+                2020-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reids/" itemprop="url" rel="index">
+                    <span itemprop="name">reids</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一：reids的基础知识"><a href="#一：reids的基础知识" class="headerlink" title="一：reids的基础知识"></a>一：reids的基础知识</h3><p>1.启动redis: <strong>./reids.server /xx/xx/redis.conf</strong></p>
+<p>2.检测reids是否启动成功： <strong>./reids.cli -p 6379</strong>  (6379为redis的默认端口号)</p>
+<img src="/2020/06/16/reids/1.png">
+<p>输入Ping恢复pong表示成功。</p>
+<p>3.redis默认是16个库，<strong>select x (x表示索引 0-15)</strong>命令切换数据库</p>
+<img src="/2020/06/16/reids/2.png">
+<p>库的索引从0开始，select 1表示切换到第二个库。</p>
+<p>redis的库数量可以在reids.conf文件中修改定义:如下图</p>
+<img src="/2020/06/16/reids/3.png">
+<p>4.<strong>dbsize</strong>命令查看当前数据库的key的数量，keys * 查询当前库所有的数据， keys k?查询当前库所有以k开头的数据</p>
+<img src="/2020/06/16/reids/4.png">
+<p>5.<strong>flushdb:清空当前库数据，flushall:清空全部库数据</strong></p>
+<h3 id="二-redis的五大数据类型"><a href="#二-redis的五大数据类型" class="headerlink" title="二.redis的五大数据类型"></a>二.redis的五大数据类型</h3><ol>
+<li>redis String (字符串)</li>
+<li>redis Hash （哈希）</li>
+<li>redis list （列表）</li>
+<li>redis set （集合）</li>
+<li>redis zset （sorted set:有序集合）</li>
+</ol>
+<p>2.常见的redis数据类型操作命令：<a href="http://redisdoc.com/" target="_blank" rel="noopener">http://redisdoc.com/</a> </p>
+<h3 id="三-redis数据类型的常用命令"><a href="#三-redis数据类型的常用命令" class="headerlink" title="三.redis数据类型的常用命令"></a>三.redis数据类型的常用命令</h3><p><strong>Redis键（key） :</strong></p>
+<p>keys *</p>
+<p>exists key的名字判断某个key是否存在（1/0）</p>
+<p>move key db  –&gt;  丛当前库中移除指定的k到指定的库中： move k2 2  (把当前库中的k2移除到第3个数据库中)</p>
+<p>expire key 秒钟：为给定的key设置过期时间</p>
+<p>ttl key 查看还有多少秒过期，-1表示永不过期、-2表示已过期</p>
+<p>type key 查看你的Key是什么类型</p>
+<img src="/2020/06/16/reids/5.png">
+<p><strong>Redis 字符串(String) :</strong></p>
+<p>set/get/del/append/strlen  append k2 123 //在 k2后面最近123</p>
+<p>Incr/decr/incrby/decrby,一定要是数字才能进行加减</p>
+<p>getrange/setrange 取范围内的值/设置范围内的值: getrange k2 0 2/setrange k2 0 xxx</p>
+<p>setex(set with expire)  :setex k2 10 k2 //设置k2十秒后过期删除</p>
+<p>setnx（set if not exist）:setnx k2 123 //判断k2是存在，不存在则设置它的值为123</p>
+<p>mset/mget/msetnx ：设置/获取多个值/多个不存在：mset k1 v2 k2 v2 /mget k1 k2/msetnx k1 v1 k2 v2</p>
+<p>getset(先get再set)</p>
+<p><strong>Redis列表（List）:</strong></p>
+<p>lpush/rpush/lrange</p>
+<img src="/2020/06/16/reids/6.png">
+<p>lpop/rpop出站。（从前面开始【正顺】/从后面开始【反顺】）</p>
+<p>lindex，按照索引下标获取元素（从上到下） lindex list01 1</p>
+<p>llen 长度</p>
+<p>lrem list删除n个value : lrem list01 1 3 (就是删除集合中的1个3)</p>
+<img src="/2020/06/16/reids/7.png">
+<p>ltrim list 开始index  接收index,截取指定范围的值然后赋值给key (就是截取集合中1-3索引的值)：list=1234 ,ltrim list 1 3 结果为：234</p>
+<p>rpoplpush 源列表 目的列表</p>
+<img src="/2020/06/16/reids/8.png">
+<p>lset key index value : 对集合指定的索引赋值</p>
+<p>linsert key before/after 值1 值2  把某个值插入到某个Key的前面或者后面</p>
+<img src="/2020/06/16/reids/9.png">
+<p><strong>Redis集合（Set）</strong></p>
+<p>sadd/smembers/sismember</p>
+<img src="/2020/06/16/reids/10.png">
+<p>scard ,获取集合里面有多少个元素</p>
+<p>srem key value 删除集合中的元素</p>
+<p>srandmember key 某个整数（随机出几个数）：srandmember set 3,在set这个集合中随机去除3个数据</p>
+<p>spop key 随机出栈 （比如：spop set01 即从set01中随便“移除”一个值出来）</p>
+<p>smove key1 key2  ，作用是将key1里面的某个‘移除值赋值’给key2</p>
+<p>sdiff：差集、sinter:交集、sunion:并集</p>
+<img src="/2020/06/16/reids/11.png">
+<p><strong>Redis哈希（Hash）</strong></p>
+<p>kv模式不变，但是v是一个键值对</p>
+<p>hset/hget/hmget/hgetall/hdel : hset user id 11:设置user里面的id为11</p>
+<p>hlen </p>
+<p>hexists key 在key里面是否存在某个值的key (1/0)</p>
+<p>hkeys/hvals  单独获取hash里面的Key或value ： hkeys user</p>
+<p>hincrby/hincybyfloat</p>
+<img src="/2020/06/16/reids/12.png">
+<p>hsetnx : hsetnx user id 11(判断user里面是否存在id，存在则不出返回0，否则新增id 11,返回1)</p>
+<p><strong>Redis有序集合(zset)</strong></p>
+<p>在set基础上加了一个score值，之前set是 k1 v1 v2 v3</p>
+<p>现在zset是 k1 score1 v1 score2 v2</p>
+<p>zadd/zrange/zrange withscores</p>
+<img src="/2020/06/16/reids/13.png">
+<p>zrangebyscore key 开始score 结束score </p>
+<img src="/2020/06/16/reids/14.png">
+<p>“(“表示不包含，limit表示从第几个开始取值，取多少个</p>
+<p>zrem key ，某score下对应的value值，作用是删除元素</p>
+<p>zcard  获取长度</p>
+<p>zcount key score 区间， 获取区间大小</p>
+<p>zrank key values  ：获取下标值</p>
+<p>zscore key : 对应值获取对应分数（通过v 获取 score）</p>
+<img src="/2020/06/16/reids/15.png">
+<p>zrevrank key values 值 ：作用是逆序获取下标值</p>
+<p>zrevrange：作用是反转zset里面的，比如： 13 –》31</p>
+<p>zrevangebyscore key 和zrangebyscore 相反：zrevangebyscore key 90 60 ，zrangebyscore key 60 90</p>
+<h3 id="四：redis配置文件介绍"><a href="#四：redis配置文件介绍" class="headerlink" title="四：redis配置文件介绍"></a>四：redis配置文件介绍</h3><p>INCLUDES：可以通过includes包含，redis.conf可以作为总闸，包含其他</p>
+<p>GENERAL:</p>
+<p><strong>SNAPSHOTTING:</strong></p>
+<p>save : 保存快照，数据保存至dump.rdb文件中</p>
+<p>stop-writes-on-bgsave-error yes（默认yes）(stop-writes-on-bgsave-error:如果保存错误那么前台停止写)</p>
+<p>如果配置成no，表示你不在乎数据的一致性或者有其他手段发现和控制</p>
+<p>rdbcompression yes：对于存储到磁盘中的快照，可以设置是否进行压缩存储。如果是的话redis将采用laf算法进行压缩。如果你不想消耗cpu来进行压缩的话，可以设置为No</p>
+<p>rdbchecksum yes : 在存储快照后，还可以让redis使用crc64算法来进行数据校验，但是这样做会增加大约10%的性能消耗，如果希望获取到最大的性能提升，可以设置为no</p>
+<p>dbfilename dump.rdb : 备份文件的名称默认为：dumo.rdb</p>
+<p>dir ./ :文件目录</p>
+<h3 id="五：redis的持久化"><a href="#五：redis的持久化" class="headerlink" title="五：redis的持久化"></a>五：redis的持久化</h3><p><strong>1：rdb（Redis DataBase）</strong></p>
+<p>官方介绍：</p>
+<pre><code>在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是行话讲的**Snapshot**快照，
+</code></pre><p>​        它恢复时是将快照文件直接读到内存里。</p>
+<p>是什么：</p>
+<p>​    Redis会单独创建（fork）一个子进程来进行持久化，会先将数据写入到一个临时文件中。</p>
+<p>​        待持久化过程都结束了，再用这个临时文件替换上次持久化好的文件。</p>
+<p>​        整个过程中，主进程是不进行任何IO操作的，这就确保了极高的性能</p>
+<p>​       如果需要进行大规模的恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比</p>
+<p>​      AOF方式更加的高效。RDB的缺点是最后一次持久化后的数据可能丢失。</p>
+<p><strong>Fork:</strong></p>
+<p>​    作用是复制一个与当前进程一样的进程。新进程的所有数据、数值都和原进程一致，但是是一个全新的进程，并作为原进程的子进程</p>
+<p><strong>Redis保存的文件：</strong></p>
+<p>​    dump.rdb</p>
+<p><strong>配置位置：</strong></p>
+<p>​    配置文件中的：<strong>Snapshot</strong></p>
+<p>​    <img src="/2020/06/16/reids/16.png"></p>
+<p><strong>含义：</strong></p>
+<p>三种行为触发一个就执行保存操作：</p>
+<ol>
+<li><p>900秒内（15分钟），如果至少更换了一个key</p>
+</li>
+<li><p>300秒内（5分钟），如果至少10个key发生变化</p>
+</li>
+<li><p>60秒内，发生10000个key更改</p>
+<p><strong>禁用RDB策略释放：save “”</strong></p>
+<p><strong>在执行shutdow命令是会立马生产快照dump.rdb文件</strong></p>
+<p><strong>flushall命令也会产生dump.rdb，但里面是空的无意义</strong></p>
+<p><strong>save:save时只管保存快照，其他不管，全部阻塞</strong></p>
+<p><strong>bfsave：redis会在后台异步进行快照操作，快照同时还可以响应客户端请求</strong></p>
+<p><strong>可以通过lastsave命令获取最后一次成功执行快照的时间</strong></p>
+</li>
+</ol>
+<p>假如有些数据非常重要更改后要求立马备份，那么就直接执行save，如图：</p>
+<img src="/2020/06/16/reids/17.png">
+<p><strong>如何停止：</strong></p>
+<p>​    <strong>动态所有停止RDB保存规则的方法：redis-lic config set save “”</strong></p>
+<p>2：aof (Append Only File)</p>
+<p><strong>appendonly no</strong> 默认为no，开启为Yes</p>
+<p><strong>appendfilename “appendonly.aof”</strong>  aop数据存储数据文件名</p>
+<p><strong>aop三个属性</strong>：</p>
+<p>no: 不要fsync，只要让操作系统在需要的时候刷新数据就行了。更快。（不同步，设置数据时自行设置更新）<br>always: fsync after every write to the append only log. Slow, Safest.（每次写入仅追加日志后fsync。慢点，最安全。）<br>everysec: fsync only one time every second. Compromise.（每秒钟只同步一次）</p>
+<p>默认为：<strong>appendfsync everysec</strong></p>
+<p><strong>aof的重写功能：</strong></p>
+<p>auto-aof-rewrite-percentage 100   （默认是文件的一倍：100）<br>auto-aof-rewrite-min-size 64mb  （默认文件大小）</p>
+<p>— 即：当appendonly.aof文件的内容大于64的一倍时，进行重写。（压缩）</p>
+<h3 id="六：redis的主从复制：（一主二从，主写从读）"><a href="#六：redis的主从复制：（一主二从，主写从读）" class="headerlink" title="六：redis的主从复制：（一主二从，主写从读）"></a>六：redis的主从复制：（一主二从，主写从读）</h3><h6 id="REPLICATION"><a href="#REPLICATION" class="headerlink" title="REPLICATION"></a>REPLICATION</h6><p><strong>配置规则：配从不配主</strong></p>
+<p>replicaof masterip masterport  – masterid:主redis的地址，masterport：主redis的端口</p>
+<p>masterauth master-password  – 如果主机有设置密码，那么这个地方一定要写上主机的密码</p>
+<p>配置后启动reids服务查看如下</p>
+<img src="/2020/06/16/reids/18.png">
+<p>role:master 表主服务器，slave表从服务器</p>
+<p>connected_slaves:1 表示有1个从服务器连接</p>
+<p>等等信息</p>
+<h3 id="七：哨兵模式："><a href="#七：哨兵模式：" class="headerlink" title="七：哨兵模式："></a>七：哨兵模式：</h3><p>为什么要哨兵模式：</p>
+<p>​    简单理解即主从模式会存在主从宕机问题，这个时候就需要程序自己去发现然后去选举新的主服务。</p>
+<p>reids安装目录中有个：</p>
+<p>sentinel.conf文件这个就是配置哨兵模式的文件</p>
+<p>port 26379 为默认端口</p>
+<p>protected-mode no  这个参数请和redis.conf配置保持一致</p>
+<p>bind 127.0.0.1这个参数请和redis.conf配置保持一致</p>
+<p>daemonize no 这个设置为yes 即开启后台运行开启</p>
+<p>logfile “xx.log” 这个为哨兵日志文件配置</p>
+<p>dir /tmp 为文件存储地址 默认为：/tmp</p>
+<p>sentinel monitor master-name ip redis-port quorum</p>
+<p>​    master-name  :为主机名称 一般为：mymaster</p>
+<p>​        ip :为主机ip地址</p>
+<p>​        redis-port： 为主机端口</p>
+<p>​    quorum ：选举投票数，即有多少票通过则表示认定主机宕机，然后开始选举新的主机</p>
+<p>  <strong>sentinel monitor mymaster 127.0.0.1 6379 2</strong>  </p>
+<p>sentinel auth-pass master-name password</p>
+<p>​    若主机有密码则设置此项没有则不用设置，若设置那么主从的密码一定要一致</p>
+<p><strong>sentinel down-after-milliseconds master-name milliseconds</strong></p>
+<p>sentinel down-after-milliseconds mymaster 30000</p>
+<p>主机在30s内无法访问，则认定为宕机。</p>
+<p><strong>sentinel parallel-syncs master-name numreplicas</strong></p>
+<p><em>**</em>sentinel parallel-syncs mymaster  1</p>
+<p>主从转移要有多少个主副本，这里设置为1，数量越多耗时越长。</p>
+<p><strong>sentinel failover-timeout master-name milliseconds</strong></p>
+<p><em>**</em>sentinel failover-timeout mymaster 180000</p>
+<p>指定故障转移超时（毫秒）默认是3分钟</p>
+<p><strong>从服务的配置和主服务器配置一样，但port 要改。且端口一定要开放</strong></p>
+<p>​    </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/reids/" rel="tag"># reids</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/08/performance/" rel="next" title="常见Java性能问题定位">
+                <i class="fa fa-chevron-left"></i> 常见Java性能问题定位
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/29/dockerOracle/" rel="prev" title="docker创建oracle">
+                docker创建oracle <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/uploads/head.jpeg" alt="Je t 'aime">
+          <p class="site-author-name" itemprop="name">Je t 'aime</p>
+           
+              <p class="site-description motion-element" itemprop="description">知识源于沉淀</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.yl-online.top," title="forever杨" target="_blank">forever杨</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://tidyko.com/" title="Tidy" target="_blank">Tidy</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一：reids的基础知识"><span class="nav-number">1.</span> <span class="nav-text">一：reids的基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-redis的五大数据类型"><span class="nav-number">2.</span> <span class="nav-text">二.redis的五大数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-redis数据类型的常用命令"><span class="nav-number">3.</span> <span class="nav-text">三.redis数据类型的常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四：redis配置文件介绍"><span class="nav-number">4.</span> <span class="nav-text">四：redis配置文件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五：redis的持久化"><span class="nav-number">5.</span> <span class="nav-text">五：redis的持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六：redis的主从复制：（一主二从，主写从读）"><span class="nav-number">6.</span> <span class="nav-text">六：redis的主从复制：（一主二从，主写从读）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#REPLICATION"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">REPLICATION</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#七：哨兵模式："><span class="nav-number">7.</span> <span class="nav-text">七：哨兵模式：</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Je t 'aime</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
