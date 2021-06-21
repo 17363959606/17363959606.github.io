@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="集合接口：Collection、Map1.Collection接口下面存在的接口有：List，Set. 1.1.List集合接口的实现类有：AarryList、Vector、LinkedList、AbstractList、SynchronizedList等 1.2.Set集合接口的实现类有：HashSet、AbstractSet、SynchronizedSet、LinkedHashSet，Tree">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java集合知识">
+<meta property="og:url" content="http://17363959606.github.io/2021/03/22/collection/index.html">
+<meta property="og:site_name" content="静静同学的博客">
+<meta property="og:description" content="集合接口：Collection、Map1.Collection接口下面存在的接口有：List，Set. 1.1.List集合接口的实现类有：AarryList、Vector、LinkedList、AbstractList、SynchronizedList等 1.2.Set集合接口的实现类有：HashSet、AbstractSet、SynchronizedSet、LinkedHashSet，Tree">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-06-21T02:11:00.902Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java集合知识">
+<meta name="twitter:description" content="集合接口：Collection、Map1.Collection接口下面存在的接口有：List，Set. 1.1.List集合接口的实现类有：AarryList、Vector、LinkedList、AbstractList、SynchronizedList等 1.2.Set集合接口的实现类有：HashSet、AbstractSet、SynchronizedSet、LinkedHashSet，Tree">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17363959606.github.io/2021/03/22/collection/">
+
+
+
+
+
+  <title>java集合知识 | 静静同学的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">静静同学的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2021/03/22/collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Je t 'aime">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="静静同学的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java集合知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-22T11:34:45+08:00">
+                2021-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="集合接口：Collection、Map"><a href="#集合接口：Collection、Map" class="headerlink" title="集合接口：Collection、Map"></a>集合接口：Collection、Map</h1><p><strong>1.Collection接口下面存在的接口有：List，Set.</strong></p>
+<p>1.1.List集合接口的实现类有：AarryList、Vector、LinkedList、AbstractList、SynchronizedList等</p>
+<p>1.2.Set集合接口的实现类有：HashSet、AbstractSet、SynchronizedSet、LinkedHashSet，TreeSet等</p>
+<p><strong>2.Map接口：</strong></p>
+<p>2.1.Map集合接口的实现类有：HashMap、RefereneMap、LinkedHashMap、TableMap、CopyOnWriteHashMap等</p>
+<h1 id="一-List集合"><a href="#一-List集合" class="headerlink" title="一.List集合"></a>一.List集合</h1><h2 id="1-ArrayList知识点"><a href="#1-ArrayList知识点" class="headerlink" title="1.ArrayList知识点"></a>1.ArrayList知识点</h2><h3 id="1-继承实现关系："><a href="#1-继承实现关系：" class="headerlink" title="1.继承实现关系："></a>1.继承实现关系：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;</span><br><span class="line">        implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</span><br><span class="line">1.ArrayList继承了AbstractList抽象类、现实了List接口、RandomAccess接口、Cloneable接口以及序列号接口</span><br></pre></td></tr></table></figure>
+<h3 id="2-属性字段理解："><a href="#2-属性字段理解：" class="headerlink" title="2.属性字段理解："></a>2.属性字段理解：</h3><h4 id="2-1-DEFAULT-CAPACITY"><a href="#2-1-DEFAULT-CAPACITY" class="headerlink" title="2.1 DEFAULT_CAPACITY"></a>2.1 DEFAULT_CAPACITY</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Default initial capacity. 默认初始容量</span><br><span class="line"> */</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-EMPTY-ELEMENTDATA"><a href="#2-2-EMPTY-ELEMENTDATA" class="headerlink" title="2.2 EMPTY_ELEMENTDATA"></a>2.2 EMPTY_ELEMENTDATA</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Shared empty array instance used for empty instances.</span><br><span class="line"> 用于空实例的共享空数组实例。</span><br><span class="line"> */</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-DEFAULTCAPACITY-EMPTY-ELEMENTDATA"><a href="#2-3-DEFAULTCAPACITY-EMPTY-ELEMENTDATA" class="headerlink" title="2.3 DEFAULTCAPACITY_EMPTY_ELEMENTDATA"></a>2.3 DEFAULTCAPACITY_EMPTY_ELEMENTDATA</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Shared empty array instance used for default sized empty instances. We</span><br><span class="line"> * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when</span><br><span class="line"> * first element is added.</span><br><span class="line"> 用于默认大小的空实例的共享空数组实例。我们 将其与空的element数据区分开来，以了解何时扩张添加第一个元素。</span><br><span class="line"> */</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-elementData"><a href="#2-4-elementData" class="headerlink" title="2.4 elementData"></a>2.4 elementData</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The array buffer into which the elements of the ArrayList are stored.</span><br><span class="line"> * The capacity of the ArrayList is the length of this array buffer. Any</span><br><span class="line"> * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span><br><span class="line"> * will be expanded to DEFAULT_CAPACITY when the first element is added.</span><br><span class="line"> 存储ArrayList的元素的数组缓冲区。</span><br><span class="line">ArrayList的容量是此数组缓冲区的长度。 任何</span><br><span class="line">具有elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA的空ArrayList</span><br><span class="line">添加第一个元素时，将扩展为DEFAULT_CAPACITY</span><br><span class="line"> */</span><br><span class="line">transient Object[] elementData; // non-private to simplify nested class access</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-size"><a href="#2-5-size" class="headerlink" title="2.5 size"></a>2.5 size</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The size of the ArrayList (the number of elements it contains).</span><br><span class="line"> *ArrayList的大小（它包含的元素数）。</span><br><span class="line"> * @serial</span><br><span class="line"> */</span><br><span class="line">private int size;</span><br></pre></td></tr></table></figure>
+<h3 id="3-方法的解读"><a href="#3-方法的解读" class="headerlink" title="3.方法的解读"></a>3.方法的解读</h3><h4 id="ArrayList-int-initialCapacity"><a href="#ArrayList-int-initialCapacity" class="headerlink" title="ArrayList(int initialCapacity)"></a>ArrayList(int initialCapacity)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 构造一个指定了初始容量的Lsit列表</span><br><span class="line"> * Constructs an empty list with the specified initial capacity.</span><br><span class="line"> *</span><br><span class="line"> * @param  initialCapacity  the initial capacity of the list</span><br><span class="line"> * @throws IllegalArgumentException if the specified initial capacity</span><br><span class="line"> *         is negative</span><br><span class="line"> */</span><br><span class="line">public ArrayList(int initialCapacity) &#123;</span><br><span class="line">	//初始容量的参数大于0则new一个类型为Object数组且长度大小为initialCapacity,然后复制给elementData</span><br><span class="line">    if (initialCapacity &gt; 0) &#123;</span><br><span class="line">        this.elementData = new Object[initialCapacity];</span><br><span class="line">    &#125; else if (initialCapacity == 0) &#123;</span><br><span class="line">    //等0则用一个空的Object类型数据给elementData</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList()"></a>ArrayList()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs an empty list with an initial capacity of ten.</span><br><span class="line"> 	构造一个空的Object类型的数据</span><br><span class="line"> */</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ArrayList-Collection-lt-extends-E-gt-c"><a href="#ArrayList-Collection-lt-extends-E-gt-c" class="headerlink" title="ArrayList(Collection&lt;? extends E&gt; c)"></a>ArrayList(Collection&lt;? extends E&gt; c)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs a list containing the elements of the specified</span><br><span class="line"> * collection, in the order they are returned by the collection&apos;s</span><br><span class="line"> * iterator.</span><br><span class="line"> * 按照集合迭代器返回的顺序构造一个包含指定集合元素的列表。</span><br><span class="line"> * @param c the collection whose elements are to be placed into this list</span><br><span class="line"> 将其元素放置到此列表中的集合</span><br><span class="line"> * @throws NullPointerException if the specified collection is null</span><br><span class="line"> */</span><br><span class="line">public ArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">	//将其转换为Object类型的数组</span><br><span class="line">    Object[] a = c.toArray();</span><br><span class="line">    //如果目标数组的大小等于本身数组的大小且不等于0则判断目标类地址是否为ArrayList.class如果是则将其值赋值给本数组、否则执行copyOf()将其复制到一个指定大小为size类型为Object数组的新数组中然后将其赋值给本数据</span><br><span class="line">    if ((size = a.length) != 0) &#123;</span><br><span class="line">        if (c.getClass() == ArrayList.class) &#123;</span><br><span class="line">            elementData = a;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            elementData = Arrays.copyOf(a, size, Object[].class);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // replace with empty array.赋默认类型为object的空引用数组</span><br><span class="line">        elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="trimToSize"><a href="#trimToSize" class="headerlink" title="trimToSize"></a>trimToSize</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Trims the capacity of this &lt;tt&gt;ArrayList&lt;/tt&gt; instance to be the</span><br><span class="line"> * list&apos;s current size.  An application can use this operation to minimize</span><br><span class="line"> * the storage of an &lt;tt&gt;ArrayList&lt;/tt&gt; instance.</span><br><span class="line">将此&lt;tt&gt;ArrayList&lt;/tt&gt;实例的容量修剪为</span><br><span class="line">列表的当前大小。应用程序可以使用此操作最小化</span><br><span class="line">&lt;tt&gt;ArrayList&lt;/tt&gt;实例的存储。</span><br><span class="line"> */</span><br><span class="line">public void trimToSize() &#123;</span><br><span class="line">	//ArrayList修改的次数</span><br><span class="line">    modCount++;</span><br><span class="line">    //如果list的大小节点数据长度</span><br><span class="line">    if (size &lt; elementData.length) &#123;</span><br><span class="line">    //如果为0则给默认的Object[]的给elementData,否则复制一份长度为size的数据给elementDate</span><br><span class="line">        elementData = (size == 0)</span><br><span class="line">          ? EMPTY_ELEMENTDATA</span><br><span class="line">          : Arrays.copyOf(elementData, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="elementData-int-index"><a href="#elementData-int-index" class="headerlink" title="elementData(int index)"></a>elementData(int index)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E elementData(int index) &#123;</span><br><span class="line">	//获取指定索引位置的数据</span><br><span class="line">    return (E) elementData[index];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="get-int-index"><a href="#get-int-index" class="headerlink" title="get(int index)"></a>get(int index)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public E get(int index) &#123;</span><br><span class="line">	//检查是否索引越界</span><br><span class="line">    rangeCheck(index); //index &gt;= size 则抛出索引越界</span><br><span class="line">	//获取指定索引位置的数据</span><br><span class="line">    return elementData(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="set-int-index-E-element"><a href="#set-int-index-E-element" class="headerlink" title="set(int index, E element)"></a>set(int index, E element)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Replaces the element at the specified position in this list with</span><br><span class="line"> * the specified element.</span><br><span class="line"> *</span><br><span class="line"> * @param index index of the element to replace</span><br><span class="line"> * @param element element to be stored at the specified position</span><br><span class="line"> * @return the element previously at the specified position</span><br><span class="line"> * @throws IndexOutOfBoundsException &#123;@inheritDoc&#125;</span><br><span class="line"> */</span><br><span class="line">public E set(int index, E element) &#123;</span><br><span class="line">	//检查是否索引越界</span><br><span class="line">    rangeCheck(index);</span><br><span class="line">	//获取指定索引下的数据</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line">    //再将新的值赋值给指定索引的数组</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    //返回旧的数据</span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="add-E-e"><a href="#add-E-e" class="headerlink" title="add(E e)"></a>add(E e)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Appends the specified element to the end of this list.</span><br><span class="line"> *将指定的元素追加到此列表的末尾。</span><br><span class="line"> * @param e element to be appended to this list</span><br><span class="line"> * @return &lt;tt&gt;true&lt;/tt&gt; (as specified by &#123;@link Collection#add&#125;)</span><br><span class="line"> */</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!! 这一步递增修改的次数</span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">//扩容机制minCapacity（最小容量)的值为数组本身的size大小+1   步骤一</span><br><span class="line">private void ensureCapacityInternal(int minCapacity) &#123;</span><br><span class="line">	//elementData 数组本身数据</span><br><span class="line">	ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br><span class="line">//计算容量 步骤二</span><br><span class="line">private static int calculateCapacity(Object[] elementData, int minCapacity) &#123;</span><br><span class="line">	//判断是否为默认的空数组</span><br><span class="line">	if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">	//如果是则信息max取最大值运算，如果最小容量比默认容量10大则返回minCapacity</span><br><span class="line">	return Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">	&#125;</span><br><span class="line">	//直接返回最小容量数</span><br><span class="line">	return minCapacity;</span><br><span class="line">&#125;</span><br><span class="line">//确保准确的容量 步骤三</span><br><span class="line">private void ensureExplicitCapacity(int minCapacity) &#123;</span><br><span class="line">        modCount++; //修改的次数递增1</span><br><span class="line"></span><br><span class="line">        // overflow-conscious code</span><br><span class="line">        //判断最小容量 - 数组本身的大小是否大于0，大于0进行扩容</span><br><span class="line">        if (minCapacity - elementData.length &gt; 0)</span><br><span class="line">        //真正的扩容步骤</span><br><span class="line">            grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">  //扩容 步骤四  </span><br><span class="line"> private void grow(int minCapacity) &#123;</span><br><span class="line">        // overflow-conscious code</span><br><span class="line">        //拿到扩容前的数组长度（old）</span><br><span class="line">        int oldCapacity = elementData.length;</span><br><span class="line">        //用old长度右移1位（除以2的一次方）,再加上old的长度等于新的容量</span><br><span class="line">        int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">        //如果新容量 - 去最小容量 &lt; 0 则将最小容量的值赋值给新容量</span><br><span class="line">        if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        //如果新容量 - Intger.Max - 8 &gt; 0  则进行步骤5</span><br><span class="line">        if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        // minCapacity is usually close to size, so this is a win:</span><br><span class="line">        //最后将数组本身扩到长度为newCapacity大小的数组</span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">  //扩容 步骤五（巨大的扩容）</span><br><span class="line"> private static int hugeCapacity(int minCapacity) &#123;</span><br><span class="line">        if (minCapacity &lt; 0) // overflow</span><br><span class="line">            throw new OutOfMemoryError();</span><br><span class="line">            //最小容量 &gt; Intger.Max - 8 则取Integer.max否则取 Intger.Max - 8</span><br><span class="line">        return (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">            Integer.MAX_VALUE :</span><br><span class="line">            MAX_ARRAY_SIZE;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="add-int-index-E-element"><a href="#add-int-index-E-element" class="headerlink" title="add(int index, E element)"></a>add(int index, E element)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">	//检测索引是否越界及idenx是否&gt;0</span><br><span class="line">    rangeCheckForAdd(index);</span><br><span class="line"></span><br><span class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + 1,</span><br><span class="line">                     size - index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    size++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="remove-int-index"><a href="#remove-int-index" class="headerlink" title="remove(int index)"></a>remove(int index)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public E remove(int index) &#123;</span><br><span class="line">	//检测索引是否越界</span><br><span class="line">    rangeCheck(index);</span><br><span class="line">	//修改次数递增1次</span><br><span class="line">    modCount++;</span><br><span class="line">    //获取到指定索引下的数据</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line">    //删除的索引数</span><br><span class="line">    int numMoved = size - index - 1;</span><br><span class="line">    if (numMoved &gt; 0)</span><br><span class="line">        System.arraycopy(elementData, index+1, elementData, index,</span><br><span class="line">                         numMoved);</span><br><span class="line">    //数组大小减1并赋值为Null触发gc</span><br><span class="line">    elementData[--size] = null; // clear to let GC do its work</span><br><span class="line">	//返回被删除的数据内容</span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="remove-Object-o"><a href="#remove-Object-o" class="headerlink" title="remove(Object o)"></a>remove(Object o)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public boolean remove(Object o) &#123;</span><br><span class="line">    if (o == null) &#123;</span><br><span class="line">        for (int index = 0; index &lt; size; index++)</span><br><span class="line">            if (elementData[index] == null) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int index = 0; index &lt; size; index++)</span><br><span class="line">            if (o.equals(elementData[index])) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-知识总结："><a href="#4-知识总结：" class="headerlink" title="4.知识总结："></a>4.知识总结：</h3><ol>
+<li><p>线程安全方面：线程不安全的</p>
+</li>
+<li><p>是有序的、可以存Null值。</p>
+</li>
+<li><p>容量扩容方面：默认容量为10，扩容的方法是copyOf(), 扩容大小为50%，细节看add方法）</p>
+</li>
+<li><p>底层结构：Objcet类型的数组，Object []</p>
+</li>
+</ol>
+<h2 id="2-Vector"><a href="#2-Vector" class="headerlink" title="2.Vector"></a>2.Vector</h2><p>和ArrayList基本上一样。</p>
+<ol>
+<li>线程安全方面：线程安全的，它的方法被synchronized修饰</li>
+<li>是有序的、可以存Null值。</li>
+<li>容量扩容方面：默认容量为10，扩容的方法是copyOf(), 扩容大小为原来的1倍，细节看add方法）</li>
+<li>底层结构：Objcet类型的数组，Object []</li>
+</ol>
+<h2 id="3-LinkedList"><a href="#3-LinkedList" class="headerlink" title="3.LinkedList"></a>3.LinkedList</h2><h3 id="1-继承实现关系"><a href="#1-继承实现关系" class="headerlink" title="1.继承实现关系"></a>1.继承实现关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedList&lt;E&gt;</span><br><span class="line">    extends AbstractSequentialList&lt;E&gt;</span><br><span class="line">    implements List&lt;E&gt;, Deque&lt;E&gt;, Cloneable, java.io.Serializable</span><br></pre></td></tr></table></figure>
+<h3 id="2-字段属性理解"><a href="#2-字段属性理解" class="headerlink" title="2.字段属性理解"></a>2.字段属性理解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">transient int size = 0;</span><br><span class="line">/**</span><br><span class="line"> * Pointer to first node.</span><br><span class="line"> * Invariant: (first == null &amp;&amp; last == null) ||</span><br><span class="line"> *            (first.prev == null &amp;&amp; first.item != null)</span><br><span class="line"> * 第一个节点</span><br><span class="line"> */</span><br><span class="line">transient Node&lt;E&gt; first;</span><br><span class="line">/**</span><br><span class="line"> * Pointer to last node.</span><br><span class="line"> * Invariant: (first == null &amp;&amp; last == null) ||</span><br><span class="line"> *            (last.next == null &amp;&amp; last.item != null)</span><br><span class="line"> * 最后一个节点</span><br><span class="line"> */</span><br><span class="line">transient Node&lt;E&gt; last;</span><br></pre></td></tr></table></figure>
+<h3 id="3-方法的解读-1"><a href="#3-方法的解读-1" class="headerlink" title="3.方法的解读"></a>3.方法的解读</h3><h4 id="双向链表Node结构"><a href="#双向链表Node结构" class="headerlink" title="双向链表Node结构"></a>双向链表Node结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private static class Node&lt;E&gt; &#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList()"></a>LinkedList()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs an empty list. 构造一个空的List</span><br><span class="line"> */</span><br><span class="line">public LinkedList() &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="linkLast"><a href="#linkLast" class="headerlink" title="linkLast"></a>linkLast</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Links e as last element.</span><br><span class="line"> */</span><br><span class="line">void linkLast(E e) &#123;</span><br><span class="line">	//获取最后节点链表数据</span><br><span class="line">    final Node&lt;E&gt; l = last;</span><br><span class="line">    //实例化一个链表节点信息l表示prev上一节点指针、e表示本节点内容item、next表示下一个节点指针这个传null</span><br><span class="line">    final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);</span><br><span class="line">    //将newNode赋值给最后节点last，即让last的引用地址指向newNode。</span><br><span class="line">    last = newNode;</span><br><span class="line">    //如果l为null表示第一次add，则将newNode的值赋值给first节点，否则将newNode数据赋值给上一节点中的next指针</span><br><span class="line">    if (l == null)</span><br><span class="line">        first = newNode;</span><br><span class="line">    else</span><br><span class="line">        l.next = newNode;</span><br><span class="line">        //节点大小加1</span><br><span class="line">    size++;</span><br><span class="line">    //修改次数加1</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="linkBefore"><a href="#linkBefore" class="headerlink" title="linkBefore"></a>linkBefore</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Inserts element e before non-null Node succ.</span><br><span class="line"> * 在非null节点succ之前插入元素e</span><br><span class="line"> * E e 表示要插入的节点元素</span><br><span class="line"> * Node&lt;E&gt; succ 原来索引位置的节点元素（old）</span><br><span class="line"> * 简单理解：</span><br><span class="line"> * E 为需要在指定索引位置插入的新节点内容 、</span><br><span class="line"> * succ 为指定索引位置的原数据内容。</span><br><span class="line"> * 步骤一：将old节点数据的prev节点拿出来存储在pred。</span><br><span class="line"> * 步骤二：新建一个新节点内容为e（代替原节点）,e的前节点指向pred（指向原节点的前节点）,e.后节点指向old（原节点）（succ）</span><br><span class="line"> * 步骤三：需要需要将old(succ)节点的前节点(succ.prev)引用地址改为：新节点（newNode）</span><br><span class="line"> * 步骤四：判断原节点的前节点是否为null，为null表示头节点，直接将新节点指向first节点，否则将新节点引用指向old(原节点)的前节点的next（也就是原节点的上一个节点的next要指向新节点的地址）。</span><br><span class="line"> * 以上4步就完成了所有节点的指向问题。完成了节点的插入</span><br><span class="line"> */</span><br><span class="line">void linkBefore(E e, Node&lt;E&gt; succ) &#123;</span><br><span class="line">    // assert succ != null;</span><br><span class="line">    //获取old接口的前节点指针元素、将其赋值给pred</span><br><span class="line">    final Node&lt;E&gt; pred = succ.prev;</span><br><span class="line">    //新实例化一个节点其内容为e，前节点指向pred、下节点指向succ（old）</span><br><span class="line">    final Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, succ);</span><br><span class="line">    //其次将old节点中的前节点引用地址指向心插入的节点地址（newNode）</span><br><span class="line">    succ.prev = newNode;</span><br><span class="line">    //判断old节点的前节点是否为Null,为null表示是第一个节点，则将新节点地址指向first节点</span><br><span class="line">    //否则将新节点引用指向old节点里面的next节点</span><br><span class="line">    if (pred == null)</span><br><span class="line">        first = newNode;</span><br><span class="line">    else</span><br><span class="line">        pred.next = newNode;</span><br><span class="line">     //节点长度+1</span><br><span class="line">    size++;</span><br><span class="line">    //修改次数加+</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="node-int-index"><a href="#node-int-index" class="headerlink" title="node(int index)"></a>node(int index)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Returns the (non-null) Node at the specified element index.</span><br><span class="line"> */</span><br><span class="line">Node&lt;E&gt; node(int index) &#123;</span><br><span class="line">    // assert isElementIndex(index);</span><br><span class="line">	//二分法寻址节点内容</span><br><span class="line">    if (index &lt; (size &gt;&gt; 1)) &#123;</span><br><span class="line">        Node&lt;E&gt; x = first;</span><br><span class="line">        for (int i = 0; i &lt; index; i++)</span><br><span class="line">            x = x.next;</span><br><span class="line">        return x;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Node&lt;E&gt; x = last;</span><br><span class="line">        for (int i = size - 1; i &gt; index; i--)</span><br><span class="line">            x = x.prev;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="add-int-index-E-element-1"><a href="#add-int-index-E-element-1" class="headerlink" title="add(int index, E element)"></a>add(int index, E element)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Inserts the specified element at the specified position in this list.</span><br><span class="line"> * Shifts the element currently at that position (if any) and any</span><br><span class="line"> * subsequent elements to the right (adds one to their indices).</span><br><span class="line"> *</span><br><span class="line"> * @param index index at which the specified element is to be inserted</span><br><span class="line"> * @param element element to be inserted</span><br><span class="line"> * @throws IndexOutOfBoundsException &#123;@inheritDoc&#125;</span><br><span class="line"> * 在指定索引位置插入元素</span><br><span class="line"> */</span><br><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">	//判断是否索引越界</span><br><span class="line">    checkPositionIndex(index);</span><br><span class="line">	//判断索引是否等于目前链表的最大值是则直接在尾部追加，否则执行插入操作</span><br><span class="line">    if (index == size)</span><br><span class="line">        linkLast(element);</span><br><span class="line">    else</span><br><span class="line">        linkBefore(element, node(index));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="set-int-index-E-element-1"><a href="#set-int-index-E-element-1" class="headerlink" title="set(int index, E element)"></a>set(int index, E element)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public E set(int index, E element) &#123;</span><br><span class="line">	//检测索引是否非法</span><br><span class="line">    checkElementIndex(index);</span><br><span class="line">    //二分法获取指定索引下面的数据</span><br><span class="line">    Node&lt;E&gt; x = node(index);</span><br><span class="line">    //将指定索引数据里面的item取出来并返回然后将新的值赋值给指定索引</span><br><span class="line">    E oldVal = x.item;</span><br><span class="line">    x.item = element;</span><br><span class="line">    return oldVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="remove-int-index-1"><a href="#remove-int-index-1" class="headerlink" title="remove(int index)"></a>remove(int index)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public E remove(int index) &#123;</span><br><span class="line">	//删除指定索引下的数据，先检测索引的合法性</span><br><span class="line">    checkElementIndex(index);</span><br><span class="line">    return unlink(node(index));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="unlink（Node-x）删除节点"><a href="#unlink（Node-x）删除节点" class="headerlink" title="unlink（Node x）删除节点"></a>unlink（Node<e> x）删除节点</e></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">总体步骤理解：删除指定索引的数据其实是将next、prev及本身item的引用置为null，</span><br><span class="line">然后再将其将prev（前节点）中的next指向后节点，将后节点中的prev指向前节点</span><br><span class="line">这个需要注意的一点需要判断前、后节是否为空</span><br><span class="line">E unlink(Node&lt;E&gt; x) &#123;</span><br><span class="line">    // assert x != null;</span><br><span class="line">    //拿取索引数据本身数据</span><br><span class="line">    final E element = x.item;</span><br><span class="line">    //拿取索取数据的前节点数据</span><br><span class="line">    final Node&lt;E&gt; next = x.next;</span><br><span class="line">    //拿取索引数据的后节点数据</span><br><span class="line">    final Node&lt;E&gt; prev = x.prev;</span><br><span class="line">	//判断前节点（prev）内容是否为null、为Null表示本节点就是first节点所以直接将后节点(next)数据给first数据。不为null则将前节点(prev)中的后节点(prev.next)引用地址指向后节点(next)。再将本节点(x)的前节点(x.prev)引用地址置为Null</span><br><span class="line">    if (prev == null) &#123;</span><br><span class="line">        first = next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        prev.next = next;</span><br><span class="line">        x.prev = null;</span><br><span class="line">    &#125;</span><br><span class="line">//判断后节点(next)是否为null,为null表示本节点就是last节点所以直接将前节点(prev)数据给last，不为null则将后节点(next)中的前节点(next.prev)引用地址指向前节点(prev)然后将本身的后节点(x.next)引用指向null，最后将本身数据(x.item)置为Null再将链表大小减一、修改次数加1,最后返回本次吃删除的数据内容</span><br><span class="line">    if (next == null) &#123;</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        x.next = null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    x.item = null;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    return element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-知识总结"><a href="#4-知识总结" class="headerlink" title="4.知识总结"></a>4.知识总结</h3><ol>
+<li>线程安全方面：线程不安全的</li>
+<li>是有序的、可以存Null值。</li>
+<li>容量扩容方面：无扩容、默认链表大小为0</li>
+<li>底层结构：Node<e>的双向链表结构</e></li>
+</ol>
+<h1 id="二-Set集合"><a href="#二-Set集合" class="headerlink" title="二.Set集合"></a>二.Set集合</h1><h2 id="1-HashSet知识点"><a href="#1-HashSet知识点" class="headerlink" title="1.HashSet知识点"></a>1.HashSet知识点</h2><h3 id="1-HashSet继承实现关系"><a href="#1-HashSet继承实现关系" class="headerlink" title="1.HashSet继承实现关系"></a>1.HashSet继承实现关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//继承了AbstractSet类、实现了Set、和Cloneabl、Serializable接口</span><br><span class="line">public class HashSet&lt;E&gt;</span><br><span class="line">    extends AbstractSet&lt;E&gt;</span><br><span class="line">    implements Set&lt;E&gt;, Cloneable, java.io.Serializable</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-字段属性理解-1"><a href="#2-字段属性理解-1" class="headerlink" title="2.字段属性理解"></a>2.字段属性理解</h3><h4 id="1-HashMap"><a href="#1-HashMap" class="headerlink" title="1.HashMap"></a>1.HashMap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HashSet数据结构就是用的HashMap只不过不需要传value值</span><br><span class="line">private transient HashMap&lt;E,Object&gt; map;</span><br></pre></td></tr></table></figure>
+<h4 id="PRESENT"><a href="#PRESENT" class="headerlink" title="PRESENT"></a>PRESENT</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">默认作为Map的value</span><br><span class="line">private static final Object PRESENT = new Object();</span><br></pre></td></tr></table></figure>
+<h3 id="3-方法解读"><a href="#3-方法解读" class="headerlink" title="3.方法解读"></a>3.方法解读</h3><h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet()"></a>HashSet()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs a new, empty set; the backing &lt;tt&gt;HashMap&lt;/tt&gt; instance has</span><br><span class="line"> * default initial capacity (16) and load factor (0.75).</span><br><span class="line"> * 默认new的HashSet(),实际底层是实例化了一个HashMap,默认的容量为16，负载因子为0.75</span><br><span class="line"> */</span><br><span class="line">public HashSet() &#123;</span><br><span class="line">    map = new HashMap&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="add-E-e-1"><a href="#add-E-e-1" class="headerlink" title="add(E e)"></a>add(E e)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">//新增元素，默认调用的是map的Put方法，value值为默认的object</span><br><span class="line">    return map.put(e, PRESENT)==null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="remove-Object-o-1"><a href="#remove-Object-o-1" class="headerlink" title="remove(Object o)"></a>remove(Object o)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public boolean remove(Object o) &#123;</span><br><span class="line">//删除也是调用的map的remove</span><br><span class="line">    return map.remove(o)==PRESENT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-TreeSet知识点"><a href="#1-TreeSet知识点" class="headerlink" title="1.TreeSet知识点"></a>1.TreeSet知识点</h2><h3 id="1-TreeSet的继承实现关系"><a href="#1-TreeSet的继承实现关系" class="headerlink" title="1.TreeSet的继承实现关系"></a>1.TreeSet的继承实现关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//继承了AbstractSet类、实现了NavigableSet接口、这个接口又继承了SortedSet接口所以这个TreeSet是有序的</span><br><span class="line">public class TreeSet&lt;E&gt; extends AbstractSet&lt;E&gt;</span><br><span class="line">    implements NavigableSet&lt;E&gt;, Cloneable, java.io.Serializable</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-字段属性知识"><a href="#2-字段属性知识" class="headerlink" title="2.字段属性知识"></a>2.字段属性知识</h3><h4 id="1-NavigableMap"><a href="#1-NavigableMap" class="headerlink" title="1.NavigableMap"></a>1.NavigableMap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TreeSet的底层结构是NavigableMap</span><br><span class="line">private transient NavigableMap&lt;E,Object&gt; m;</span><br></pre></td></tr></table></figure>
+<h4 id="2-PRESENT"><a href="#2-PRESENT" class="headerlink" title="2.PRESENT"></a>2.PRESENT</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NavigableMap中Vaule的值。</span><br><span class="line">private static final Object PRESENT = new Object();</span><br></pre></td></tr></table></figure>
+<h3 id="3-方法解读-1"><a href="#3-方法解读-1" class="headerlink" title="3.方法解读"></a>3.方法解读</h3><h4 id="TreeSet-先熟悉HashMap及树知识再来理解TreeSet的知识"><a href="#TreeSet-先熟悉HashMap及树知识再来理解TreeSet的知识" class="headerlink" title="TreeSet()//先熟悉HashMap及树知识再来理解TreeSet的知识"></a>TreeSet()//先熟悉HashMap及树知识再来理解TreeSet的知识</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//TreeSet的默认构造函数</span><br><span class="line">public TreeSet() &#123;  步骤1</span><br><span class="line">    this(new TreeMap&lt;E,Object&gt;());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* Constructs a set backed by the specified navigable map.</span><br><span class="line">*/</span><br><span class="line">TreeSet(NavigableMap&lt;E,Object&gt; m) &#123; 步骤3</span><br><span class="line">	this.m = m;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">//TreeMap类</span><br><span class="line">  private final Comparator&lt;? super K&gt; comparator;</span><br><span class="line"></span><br><span class="line">    private transient Entry&lt;K,V&gt; root;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * The number of entries in the tree</span><br><span class="line">     */</span><br><span class="line">    private transient int size = 0;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * The number of structural modifications to the tree.</span><br><span class="line">     */</span><br><span class="line">    private transient int modCount = 0;</span><br><span class="line">public TreeMap() &#123;  步骤2</span><br><span class="line">    comparator = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="add-E-e-2"><a href="#add-E-e-2" class="headerlink" title="add(E e)"></a>add(E e)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">	//m.put进入的TreeMap类里面的put</span><br><span class="line">    return m.put(e, PRESENT)==null;</span><br><span class="line">&#125;</span><br><span class="line">//put后的排序、规则里面用到了红黑树</span><br><span class="line">public V put(K key, V value) &#123;</span><br><span class="line">        Entry&lt;K,V&gt; t = root;</span><br><span class="line">        if (t == null) &#123;</span><br><span class="line">            compare(key, key); // type (and possibly null) check</span><br><span class="line"></span><br><span class="line">            root = new Entry&lt;&gt;(key, value, null);</span><br><span class="line">            size = 1;</span><br><span class="line">            modCount++;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        int cmp;</span><br><span class="line">        Entry&lt;K,V&gt; parent;</span><br><span class="line">        // split comparator and comparable paths</span><br><span class="line">        Comparator&lt;? super K&gt; cpr = comparator;</span><br><span class="line">        if (cpr != null) &#123;</span><br><span class="line">            do &#123;</span><br><span class="line">                parent = t;</span><br><span class="line">                cmp = cpr.compare(key, t.key);</span><br><span class="line">                if (cmp &lt; 0)</span><br><span class="line">                    t = t.left;</span><br><span class="line">                else if (cmp &gt; 0)</span><br><span class="line">                    t = t.right;</span><br><span class="line">                else</span><br><span class="line">                    return t.setValue(value);</span><br><span class="line">            &#125; while (t != null);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            if (key == null)</span><br><span class="line">                throw new NullPointerException();</span><br><span class="line">            @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">                Comparable&lt;? super K&gt; k = (Comparable&lt;? super K&gt;) key;</span><br><span class="line">            do &#123;</span><br><span class="line">                parent = t;</span><br><span class="line">                cmp = k.compareTo(t.key);</span><br><span class="line">                if (cmp &lt; 0)</span><br><span class="line">                    t = t.left;</span><br><span class="line">                else if (cmp &gt; 0)</span><br><span class="line">                    t = t.right;</span><br><span class="line">                else</span><br><span class="line">                    return t.setValue(value);</span><br><span class="line">            &#125; while (t != null);</span><br><span class="line">        &#125;</span><br><span class="line">        Entry&lt;K,V&gt; e = new Entry&lt;&gt;(key, value, parent);</span><br><span class="line">        if (cmp &lt; 0)</span><br><span class="line">            parent.left = e;</span><br><span class="line">        else</span><br><span class="line">            parent.right = e;</span><br><span class="line">        fixAfterInsertion(e);</span><br><span class="line">        size++;</span><br><span class="line">        modCount++;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-知识总结-1"><a href="#4-知识总结-1" class="headerlink" title="4.知识总结"></a>4.知识总结</h3><h1 id="三-Map集合"><a href="#三-Map集合" class="headerlink" title="三.Map集合"></a>三.Map集合</h1><h2 id="1-HashMap-1"><a href="#1-HashMap-1" class="headerlink" title="1.HashMap"></a>1.HashMap</h2><h3 id="1-继承实现类"><a href="#1-继承实现类" class="headerlink" title="1.继承实现类"></a>1.继承实现类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;</span><br><span class="line">    implements Map&lt;K,V&gt;, Cloneable, Serializable &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-字段属性说明"><a href="#2-字段属性说明" class="headerlink" title="2.字段属性说明"></a>2.字段属性说明</h3><h4 id="DEFAULT-INITIAL-CAPACITY（默认初始容量16）"><a href="#DEFAULT-INITIAL-CAPACITY（默认初始容量16）" class="headerlink" title="DEFAULT_INITIAL_CAPACITY（默认初始容量16）"></a>DEFAULT_INITIAL_CAPACITY（默认初始容量16）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * The default initial capacity - MUST be a power of two.</span><br><span class="line"> */</span><br><span class="line">static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16</span><br></pre></td></tr></table></figure>
+<h4 id="MAXIMUM-CAPACITY（Map容量的最大值2的30幂次方）"><a href="#MAXIMUM-CAPACITY（Map容量的最大值2的30幂次方）" class="headerlink" title="MAXIMUM_CAPACITY（Map容量的最大值2的30幂次方）"></a>MAXIMUM_CAPACITY（Map容量的最大值2的30幂次方）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The maximum capacity, used if a higher value is implicitly specified</span><br><span class="line"> * by either of the constructors with arguments.</span><br><span class="line"> * MUST be a power of two &lt;= 1&lt;&lt;30.</span><br><span class="line"> */</span><br><span class="line">static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/19/stringAndHashCode/" rel="next" title="equals和hashCode知识理解">
+                <i class="fa fa-chevron-left"></i> equals和hashCode知识理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/29/transactional/" rel="prev" title="事务基础知识及Spring框架中使用Transactioal踩得坑">
+                事务基础知识及Spring框架中使用Transactioal踩得坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/uploads/head.jpeg" alt="Je t 'aime">
+          <p class="site-author-name" itemprop="name">Je t 'aime</p>
+           
+              <p class="site-description motion-element" itemprop="description">知识源于沉淀</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.yl-online.top," title="forever杨" target="_blank">forever杨</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://tidyko.com/" title="Tidy" target="_blank">Tidy</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合接口：Collection、Map"><span class="nav-number">1.</span> <span class="nav-text">集合接口：Collection、Map</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一-List集合"><span class="nav-number">2.</span> <span class="nav-text">一.List集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ArrayList知识点"><span class="nav-number">2.1.</span> <span class="nav-text">1.ArrayList知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-继承实现关系："><span class="nav-number">2.1.1.</span> <span class="nav-text">1.继承实现关系：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-属性字段理解："><span class="nav-number">2.1.2.</span> <span class="nav-text">2.属性字段理解：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-DEFAULT-CAPACITY"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">2.1 DEFAULT_CAPACITY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-EMPTY-ELEMENTDATA"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2.2 EMPTY_ELEMENTDATA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-DEFAULTCAPACITY-EMPTY-ELEMENTDATA"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">2.3 DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-elementData"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">2.4 elementData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-size"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">2.5 size</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法的解读"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.方法的解读</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList-int-initialCapacity"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">ArrayList(int initialCapacity)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">ArrayList()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList-Collection-lt-extends-E-gt-c"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">ArrayList(Collection&lt;? extends E&gt; c)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trimToSize"><span class="nav-number">2.1.3.4.</span> <span class="nav-text">trimToSize</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#elementData-int-index"><span class="nav-number">2.1.3.5.</span> <span class="nav-text">elementData(int index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-int-index"><span class="nav-number">2.1.3.6.</span> <span class="nav-text">get(int index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set-int-index-E-element"><span class="nav-number">2.1.3.7.</span> <span class="nav-text">set(int index, E element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-E-e"><span class="nav-number">2.1.3.8.</span> <span class="nav-text">add(E e)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-int-index-E-element"><span class="nav-number">2.1.3.9.</span> <span class="nav-text">add(int index, E element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-int-index"><span class="nav-number">2.1.3.10.</span> <span class="nav-text">remove(int index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-Object-o"><span class="nav-number">2.1.3.11.</span> <span class="nav-text">remove(Object o)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-知识总结："><span class="nav-number">2.1.4.</span> <span class="nav-text">4.知识总结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Vector"><span class="nav-number">2.2.</span> <span class="nav-text">2.Vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-LinkedList"><span class="nav-number">2.3.</span> <span class="nav-text">3.LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-继承实现关系"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.继承实现关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字段属性理解"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.字段属性理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法的解读-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.方法的解读</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#双向链表Node结构"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">双向链表Node结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">LinkedList()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linkLast"><span class="nav-number">2.3.4.</span> <span class="nav-text">linkLast</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#linkBefore"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">linkBefore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node-int-index"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">node(int index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-int-index-E-element-1"><span class="nav-number">2.3.4.3.</span> <span class="nav-text">add(int index, E element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set-int-index-E-element-1"><span class="nav-number">2.3.4.4.</span> <span class="nav-text">set(int index, E element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-int-index-1"><span class="nav-number">2.3.4.5.</span> <span class="nav-text">remove(int index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unlink（Node-x）删除节点"><span class="nav-number">2.3.4.6.</span> <span class="nav-text">unlink（Node x）删除节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-知识总结"><span class="nav-number">2.3.5.</span> <span class="nav-text">4.知识总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-Set集合"><span class="nav-number">3.</span> <span class="nav-text">二.Set集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HashSet知识点"><span class="nav-number">3.1.</span> <span class="nav-text">1.HashSet知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-HashSet继承实现关系"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.HashSet继承实现关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字段属性理解-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.字段属性理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HashMap"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">1.HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRESENT"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">PRESENT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法解读"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.方法解读</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">HashSet()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-E-e-1"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">add(E e)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-Object-o-1"><span class="nav-number">3.1.3.3.</span> <span class="nav-text">remove(Object o)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TreeSet知识点"><span class="nav-number">3.2.</span> <span class="nav-text">1.TreeSet知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-TreeSet的继承实现关系"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.TreeSet的继承实现关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字段属性知识"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.字段属性知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-NavigableMap"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">1.NavigableMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-PRESENT"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">2.PRESENT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-方法解读-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.方法解读</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet-先熟悉HashMap及树知识再来理解TreeSet的知识"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">TreeSet()//先熟悉HashMap及树知识再来理解TreeSet的知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-E-e-2"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">add(E e)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-知识总结-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">4.知识总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-Map集合"><span class="nav-number">4.</span> <span class="nav-text">三.Map集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HashMap-1"><span class="nav-number">4.1.</span> <span class="nav-text">1.HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-继承实现类"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.继承实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字段属性说明"><span class="nav-number">4.1.2.</span> <span class="nav-text">2.字段属性说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DEFAULT-INITIAL-CAPACITY（默认初始容量16）"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">DEFAULT_INITIAL_CAPACITY（默认初始容量16）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAXIMUM-CAPACITY（Map容量的最大值2的30幂次方）"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">MAXIMUM_CAPACITY（Map容量的最大值2的30幂次方）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Je t 'aime</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

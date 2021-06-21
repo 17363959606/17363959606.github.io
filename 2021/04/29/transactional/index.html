@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="spring,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="0.为什么写这篇文章​    某天，app端开发人员突然在钉钉上提了个问题单描述为：在app端创建群组功能时，明明提示系统错误但是在查询列表中却能看到刚刚创建的群组数据，但是点击进去却有提示错误异常。    收到这个bug单后，直接快速过了一遍前人写的代码发现里面有涉及到三个表的数据新增操作，但是整个业务的执行步骤中却没有追加事务操作，导致了前面的数据入库了后面的业务逻辑却出现了问题，但是之前的入">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事务基础知识及Spring框架中使用Transactioal踩得坑">
+<meta property="og:url" content="http://17363959606.github.io/2021/04/29/transactional/index.html">
+<meta property="og:site_name" content="静静同学的博客">
+<meta property="og:description" content="0.为什么写这篇文章​    某天，app端开发人员突然在钉钉上提了个问题单描述为：在app端创建群组功能时，明明提示系统错误但是在查询列表中却能看到刚刚创建的群组数据，但是点击进去却有提示错误异常。    收到这个bug单后，直接快速过了一遍前人写的代码发现里面有涉及到三个表的数据新增操作，但是整个业务的执行步骤中却没有追加事务操作，导致了前面的数据入库了后面的业务逻辑却出现了问题，但是之前的入">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/1.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/2.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/3.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/4.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/5.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/6.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/7.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/8.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/9.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/10.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/11.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/12.png">
+<meta property="og:image" content="http://17363959606.github.io/2021/04/29/transactional/13.png">
+<meta property="og:updated_time" content="2021-06-21T02:07:42.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="事务基础知识及Spring框架中使用Transactioal踩得坑">
+<meta name="twitter:description" content="0.为什么写这篇文章​    某天，app端开发人员突然在钉钉上提了个问题单描述为：在app端创建群组功能时，明明提示系统错误但是在查询列表中却能看到刚刚创建的群组数据，但是点击进去却有提示错误异常。    收到这个bug单后，直接快速过了一遍前人写的代码发现里面有涉及到三个表的数据新增操作，但是整个业务的执行步骤中却没有追加事务操作，导致了前面的数据入库了后面的业务逻辑却出现了问题，但是之前的入">
+<meta name="twitter:image" content="http://17363959606.github.io/2021/04/29/transactional/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17363959606.github.io/2021/04/29/transactional/">
+
+
+
+
+
+  <title>事务基础知识及Spring框架中使用Transactioal踩得坑 | 静静同学的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">静静同学的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2021/04/29/transactional/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Je t 'aime">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="静静同学的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">事务基础知识及Spring框架中使用Transactioal踩得坑</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-29T11:55:33+08:00">
+                2021-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0-为什么写这篇文章"><a href="#0-为什么写这篇文章" class="headerlink" title="0.为什么写这篇文章"></a>0.为什么写这篇文章</h2><p>​    某天，app端开发人员突然在钉钉上提了个问题单描述为：在app端创建群组功能时，明明提示系统错误但是在查询列表中却能看到刚刚创建的群组数据，但是点击进去却有提示错误异常。<br>    收到这个bug单后，直接快速过了一遍前人写的代码发现里面有涉及到三个表的数据新增操作，但是整个业务的执行步骤中却没有追加事务操作，导致了前面的数据入库了后面的业务逻辑却出现了问题，但是之前的入库数据却没有回滚。</p>
+<h2 id="1-什么是事务"><a href="#1-什么是事务" class="headerlink" title="1.什么是事务"></a>1.什么是事务</h2><p>​    用作者本人的话来理解就是：<strong>由一段组合sql组成的业务逻辑sql块，要么全部成功、要么全部不成功，一个不可分割的单位。</strong></p>
+<p><strong>事务的四大特性：</strong></p>
+<ul>
+<li>原子性(Atomicity)：事务是数据库的逻辑工作单位，事务中包含的操作要么都执行，要么都不执行。</li>
+<li>隔离性(lsolation)：一个事务的执行不受其它事务的干扰，即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能相互干扰。</li>
+<li>持久性(Durability)：成功提交后的后事务数据是持久有效的。</li>
+<li>一致性(Consistency)：事务的提交前后状态是一致的，要么都成功，要么都失败，不可能成功一半失败半。</li>
+</ul>
+<p><strong>事务的实现主要分为：编程式事务和声明式事务两种</strong></p>
+<ul>
+<li>编程式事务：是指在代码中手动的管理事务的提交、回滚等操作，代码侵入性比较强且写起来繁琐，</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Session session = getSessionFactory().openSession();</span><br><span class="line">    session.beginTransaction(); // 开启事务</span><br><span class="line">    Criteria criteria = session.createCriteria(SysWarning.class);</span><br><span class="line">    criteria.add(Restrictions.eq(&quot;id&quot;, 1));</span><br><span class="line">    SysWarning sysWarning = (SysWarning) criteria.uniqueResult();</span><br><span class="line">    sysWarning.setIsDelete(0);</span><br><span class="line">    session.saveOrUpdate(sysWarning);</span><br><span class="line">    session.getTransaction().commit();// 提交事务</span><br><span class="line">	session.close();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>声明式事务：基于aop面向切面实现，它将具体业务与事务处理部分解耦，代码侵入性很低，所以在实际开发中声明式事务用的比较多。声明式事务有两种实现方式,一种是基于TX和AOP的XML配置方式实现，一种是基于@Transactional注解实现。</li>
+</ul>
+<p>1.<strong>基于XT和AOP的xml方式实现（这种方式一般出现在SpringMVC项目中）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; </span><br><span class="line">xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;  </span><br><span class="line">xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">http://www.springframework.org/schema/tx </span><br><span class="line">http://www.springframework.org/schema/tx/spring-tx-4.3.xsd</span><br><span class="line">http://www.springframework.org/schema/beans/spring-beans-4.3.xsd </span><br><span class="line">http://www.springframework.org/schema/aop </span><br><span class="line">http://www.springframework.org/schema/aop/spring-aop-4.3.xsd&quot;&gt;</span><br><span class="line">&lt;!-- 拦截器方式配置事物 --&gt;</span><br><span class="line">	&lt;tx:advice id=&quot;transactionAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;</span><br><span class="line">		&lt;tx:attributes&gt;</span><br><span class="line">			&lt;tx:method name=&quot;add*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;save*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;update*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;modify*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;edit*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;delete*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;remove*&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;repair&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;deleteAndRepair&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;get*&quot; propagation=&quot;SUPPORTS&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;find*&quot; propagation=&quot;SUPPORTS&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;load*&quot; propagation=&quot;SUPPORTS&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;search*&quot; propagation=&quot;SUPPORTS&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;datagrid*&quot; propagation=&quot;SUPPORTS&quot; /&gt;</span><br><span class="line"></span><br><span class="line">			&lt;tx:method name=&quot;*&quot; propagation=&quot;SUPPORTS&quot; /&gt;</span><br><span class="line">		&lt;/tx:attributes&gt;</span><br><span class="line">	&lt;/tx:advice&gt;</span><br><span class="line">	&lt;aop:config&gt;</span><br><span class="line">		&lt;aop:pointcut id=&quot;transactionPointcut&quot; expression=&quot;execution(* com.xx.xx.service..*Impl.*(..))&quot; /&gt;</span><br><span class="line">		&lt;aop:advisor pointcut-ref=&quot;transactionPointcut&quot; advice-ref=&quot;transactionAdvice&quot; /&gt;</span><br><span class="line">	&lt;/aop:config&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2.基于@Transactional注解</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Transactional</span><br><span class="line">public ResultJson commentDelete(int[] id) &#123;</span><br><span class="line">    List&lt;Integer&gt; ids = Arrays.stream(id).boxed().collect(Collectors.toList());</span><br><span class="line">    try &#123;</span><br><span class="line">        commentDaoI.deleteByAid(ids);</span><br><span class="line">        commentDaoI.deleteByFloorId(ids);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        logger.error(&quot;delete error msg:[&#123;&#125;]&quot;, e.getMessage());</span><br><span class="line">      	throw new Exception(&quot;xxx&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-Transactional介绍"><a href="#2-Transactional介绍" class="headerlink" title="2.@Transactional介绍"></a>2.@Transactional介绍</h2><p><strong>1、@Transactional注解可以作用于那些地方？</strong></p>
+<p>@Transactional可以作用在接口、类、类方法</p>
+<ul>
+<li>作用于类：当把@Transactional 注解放在类上时，表示所有该类的public方法都配置相同的事务属性信息。</li>
+<li>作用于方法：当类配置了@Transactional，方法也配置了@Transactional，方法的事务会覆盖类的事务配置信息。</li>
+<li>作用于接口：不推荐这种使用方法，因为一旦标注在Interface上并且配置了Spring AOP 使用CGLib动态代理，将会导致@Transactional注解失效 </li>
+</ul>
+<p><strong>2、@Transactional注解有哪些属性7个？</strong></p>
+<p><strong>propagetion属性</strong></p>
+<ul>
+<li>propagation 代表事务的传播行为，默认值为 Propagation.REQUIRED，其他的属性信息如下：</li>
+<li>Propagation.REQUIRED：如果当前存在事务，则加入该事务，如果当前不存在事务，则创建一个新的事务。( 也就是说如果A方法和B方法都添加了注解，在默认传播模式下，A方法内部调用B方法，会把两个方法的事务合并为一个事务 ）</li>
+<li>Propagation.SUPPORTS：如果当前存在事务，则加入该事务；如果当前不存在事务，则以非事务的方式继续运行。</li>
+<li>Propagation.MANDATORY：如果当前存在事务，则加入该事务；如果当前不存在事务，则抛出异常。Propagation.REQUIRES_NEW：重新创建一个新的事务，如果当前存在事务，暂停当前的事务。( 当类A中的 a 方法用默认Propagation.REQUIRED模式，类B中的 b方法加上采用 Propagation.REQUIRES_NEW模式，然后在 a 方法中调用 b方法操作数据库，然而 a方法抛出异常后，b方法并没有进行回滚，因为Propagation.REQUIRES_NEW会暂停 a方法的事务 )</li>
+<li>Propagation.NOT_SUPPORTED：以非事务的方式运行，如果当前存在事务，暂停当前的事务。Propagation.NEVER：以非事务的方式运行，如果当前存在事务，则抛出异常。Propagation.NESTED ：和 Propagation.REQUIRED 效果一样。</li>
+</ul>
+<p><strong>isolation属性</strong></p>
+<p>isolation ：事务的隔离级别，默认值为</p>
+<p>Isolation.DEFAULT</p>
+<p>solation.DEFAULT：使用底层数据库默认的隔离级别。</p>
+<p>Isolation.READ_UNCOMMITTED（读未提交）,该隔离级别的事务会读到其它未提交事务的数据，此现象称之为脏读。</p>
+<p>Isolation.READ_COMMITTED（读已提交），一个事务可以读取另一个已提交的事务，多次读取会造成不一样的结果，此现象成为不可重复读问题，Oracle和SQL Server的默认隔离级别</p>
+<p>Isolation.REPEATABLE_READ（可重复读），该隔离级别是Mysql默认的隔离级别，在同一个事务里，select的结果是事务开始时时间点的状态，因此，同样的select操作读到的结果会是一致的，但是会有幻读的现象，MYsql的InnoDB引擎可以通过next-key-locks机制来避免幻读。</p>
+<p>Isolation.SERIALIZABLE（串行化）在该隔离级别下事务都是串行顺序执行的，mysql数据库饿innoDB引擎会给读操作隐式加一把共享锁，从而避免了脏读、不可重复度和幻读问题。</p>
+<p><strong>timeout属性</strong></p>
+<p>timeout ：事务的超时时间，默认值为 -1。如果超过该时间限制但事务还没有完成，则自动回滚事务 </p>
+<p><strong>readOnly属性</strong></p>
+<p>readOnly ：指定事务是否为只读事务，默认值为 false；为了忽略那些不需要事务的方法，比如读取数据，可以设置 read-only 为 true。 </p>
+<p><strong>rollbackFor属性</strong></p>
+<p>rollbackFor ：用于指定能够触发事务回滚的异常类型，可以指定多个异常类型。 </p>
+<p><strong>noRollbackFor属性</strong></p>
+<p>noRollbackFor：抛出指定的异常类型，不回滚事务，也可以指定多个异常类型。 </p>
+<h2 id="3-Transacationl失效场景"><a href="#3-Transacationl失效场景" class="headerlink" title="3.@Transacationl失效场景"></a>3.@Transacationl失效场景</h2><p><strong>1、@Transactional 应用在非 public 修饰的方法上</strong> </p>
+<p>如果Transactional注解应用在非public修饰的方法上，Transactional将会失效。  </p>
+<p>之所以会失效是因为在Spring AOP 代理时， TransactionInterceptor （事务拦截器）在目标方法执行前后进行拦截，DynamicAdvisedInterceptor（CglibAopProxy 的内部类）的 intercept 方法或 JdkDynamicAopProxy 的 invoke 方法会间接调用 AbstractFallbackTransactionAttributeSource的 computeTransactionAttribute</p>
+<p>方法，获取Transactional 注解的事务配置信息，此方法会检查目标方法的修饰符是否为 public，不是 public则不会获取@Transactional 的属性配置信息。 </p>
+<p><strong>注意：protected、private修饰的方法上使用 @Transactional 注解，虽然事务无效，但不会有任何报错，这是我们很容犯错的一点。</strong> </p>
+<p><strong>2、@Transactional 注解属性 propagation 设置错误</strong> </p>
+<p>这种失效是由于配置错误，若是错误的配置以下三种 propagation，<strong>事务将不会发生回滚</strong>。</p>
+<p>TransactionDefinition.PROPAGATION_SUPPORTS：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。</p>
+<p>TransactionDefinition.PROPAGATION_NOT_SUPPORTED：以非事务方式运行，如果当前存在事务，则把当前事务挂起。</p>
+<p>TransactionDefinition.PROPAGATION_NEVER：以非事务方式运行，如果当前存在事务，则抛出异常。</p>
+<p><strong>3、@Transactional 注解属性 rollbackFor 设置错误</strong> </p>
+<p>rollbackFor 可以指定能够触发事务回滚的异常类型。Spring默认抛出了未检查unchecked异常（继承自 RuntimeException 的异常）或者 Error才回滚事务；其他异常不会触发回滚事务。如果在事务中抛出其他类型的异常，但却期望 Spring 能够回滚事务，就需要指定 rollbackFor属性。  </p>
+<img src="/2021/04/29/transactional/1.png">
+<p>若在目标方法中抛出的异常是 rollbackFor 指定的异常的子类，事务同样会回滚。 </p>
+<p><strong>4、同一个类中方法调用，导致@Transactional失效</strong> </p>
+<p>开发中避免不了会对同一个类里面的方法调用，比如有一个类Test，它的一个方法A，A再调用本类的方法B（不论方法B是用public还是private修饰），但方法A没有声明注解事务，而B方法有。则外部调用方法A之后，方法B的事务是不会起作用的。这也是经常犯错误的一个地方。</p>
+<p>那为啥会出现这种情况？其实这还是由于使用Spring AOP代理造成的，因为只有当事务方法被当前类以外的代码调用时，才会由Spring生成的代理对象来管理。</p>
+<p><strong>5、异常被你的 catch“吃了”导致@Transactional失效</strong> </p>
+<p>这种情况是最常见的一种@Transactional注解失效场景， </p>
+<p>如果B方法内部抛了异常，而A方法此时try catch了B方法的异常，那这个事务不能正常回滚。</p>
+<p>错误的实例：因为异常被catch捕获且处理了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Transactional</span><br><span class="line">public ResultJson commentDelete(int[] id) &#123;</span><br><span class="line">    List&lt;Integer&gt; ids = Arrays.stream(id).boxed().collect(Collectors.toList());</span><br><span class="line">    try &#123;</span><br><span class="line">        commentDaoI.deleteByAid(ids);</span><br><span class="line">        commentDaoI.deleteByFloorId(ids);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        logger.error(&quot;delete error msg:[&#123;&#125;]&quot;, e.getMessage());</span><br><span class="line">        return new ResultJson().setErrorCode(ExceptionEnum.SYSTEM_ERROR.getErrorCode()).setMessage(ExceptionEnum.SYSTEM_ERROR.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">    return new ResultJson().setMessage(&quot;ok&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>6、数据库引擎不支持事务</strong> </p>
+<p>这种情况出现的概率并不高，事务能否生效数据库引擎是否支持事务是关键。常用的MySQL数据库默认使用支持事务的innodb引擎。一旦数据库引擎切换成不支持事务的myisam，那事务就从根本上失效了 </p>
+<h2 id="4-分布式事务"><a href="#4-分布式事务" class="headerlink" title="4.分布式事务"></a>4.分布式事务</h2><img src="/2021/04/29/transactional/2.png">
+<img src="/2021/04/29/transactional/3.png">
+<img src="/2021/04/29/transactional/4.png">
+<img src="/2021/04/29/transactional/5.png">
+<img src="/2021/04/29/transactional/6.png">
+<img src="/2021/04/29/transactional/7.png">
+<img src="/2021/04/29/transactional/8.png">
+<img src="/2021/04/29/transactional/9.png">
+<img src="/2021/04/29/transactional/10.png">
+<img src="/2021/04/29/transactional/11.png">
+<img src="/2021/04/29/transactional/12.png">
+<img src="/2021/04/29/transactional/13.png">
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/22/collection/" rel="next" title="java集合知识">
+                <i class="fa fa-chevron-left"></i> java集合知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/26/mysql-knowledge/" rel="prev" title="mysql_knowledge">
+                mysql_knowledge <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/uploads/head.jpeg" alt="Je t 'aime">
+          <p class="site-author-name" itemprop="name">Je t 'aime</p>
+           
+              <p class="site-description motion-element" itemprop="description">知识源于沉淀</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.yl-online.top," title="forever杨" target="_blank">forever杨</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://tidyko.com/" title="Tidy" target="_blank">Tidy</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-为什么写这篇文章"><span class="nav-number">1.</span> <span class="nav-text">0.为什么写这篇文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是事务"><span class="nav-number">2.</span> <span class="nav-text">1.什么是事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Transactional介绍"><span class="nav-number">3.</span> <span class="nav-text">2.@Transactional介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Transacationl失效场景"><span class="nav-number">4.</span> <span class="nav-text">3.@Transacationl失效场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-分布式事务"><span class="nav-number">5.</span> <span class="nav-text">4.分布式事务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Je t 'aime</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

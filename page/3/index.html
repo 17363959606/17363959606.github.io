@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/11/12/LinuxTop/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/05/08/performance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/12/LinuxTop/" itemprop="url">Linux中查看各进程资源占用状况命令Top</a></h1>
+                <a class="post-title-link" href="/2020/05/08/performance/" itemprop="url">常见Java性能问题定位</a></h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-12T14:14:30+08:00">
-                2019-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T09:05:28+08:00">
+                2020-05-08
               </time>
             
 
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -398,13 +398,13 @@
       
         
           
-          前段时间作者本人发布了小小的java项目，但是过了一段时间后领导发现我发布的那个项目内存占用率太高了有点反常，所以今天特写此文来记录一下相关的处理方式一遍加深印象。
-首先用到的命令：Top
-top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任
+          注：本文转自：https://juejin.im/post/5e9725c1f265da47dc4cd8bd 作者：木木匠
+本人只是照搬作为一个记录收藏方便学习。
+概述性能优化一向是后端服务优化的重点，但是线上性能故障问题不是经常出现，或者受限于业务产品，根本就没办法出现性能问题，包括笔者自己遇到的
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/11/12/LinuxTop/#more" rel="contents">
+            <a class="btn" href="/2020/05/08/performance/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -455,7 +455,7 @@ top命令是Linux下常用的性能分析工具，能够实时显示系统中各
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/11/04/sqlBaseGrammar/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/03/24/tomcatSize/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -474,7 +474,7 @@ top命令是Linux下常用的性能分析工具，能够实时显示系统中各
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/04/sqlBaseGrammar/" itemprop="url">sql中基本的语句用法</a></h1>
+                <a class="post-title-link" href="/2020/03/24/tomcatSize/" itemprop="url">tomcat默认请求参数最大值及页面图片压缩处理方法</a></h1>
         
 
         <div class="post-meta">
@@ -486,8 +486,8 @@ top命令是Linux下常用的性能分析工具，能够实时显示系统中各
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T11:40:46+08:00">
-                2019-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T18:25:39+08:00">
+                2020-03-24
               </time>
             
 
@@ -509,8 +509,8 @@ top命令是Linux下常用的性能分析工具，能够实时显示系统中各
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -548,13 +548,13 @@ top命令是Linux下常用的性能分析工具，能够实时显示系统中各
       
         
           
-          前言之所以写这篇基础语句文章，主要是因为前段时间在接触一些比较复杂的数据语法操作时，发现自己对这方面的知识还是有些欠缺的，希望这篇初级语句文章对自己以后的职业生涯有所帮助。
-本文摘自：https://juejin.im/entry/591427a22f301e006b861726  
-insert 
+          引：最近小编在开发一套活体流程业务，其中有这么一个功能：需要用户上送自己的身份证正反面照片，所以就得自己开发一个页面，然后页面展示用户上传的图片再以base64格式将数据传输到后台做处理。
+遇到的问题点：pc端上传图片数据到后台服务器正常、而手机端上传数据服务器却接收不到数据信息。
+解决思路：1、通
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/11/04/sqlBaseGrammar/#more" rel="contents">
+            <a class="btn" href="/2020/03/24/tomcatSize/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -605,7 +605,7 @@ insert
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/10/15/rpc/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/02/25/oraclerole/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -624,7 +624,7 @@ insert
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/15/rpc/" itemprop="url">何为rpc</a></h1>
+                <a class="post-title-link" href="/2020/02/25/oraclerole/" itemprop="url">oracle同库夸角色查表</a></h1>
         
 
         <div class="post-meta">
@@ -636,8 +636,8 @@ insert
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T15:43:17+08:00">
-                2019-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-25T16:08:44+08:00">
+                2020-02-25
               </time>
             
 
@@ -659,8 +659,8 @@ insert
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -698,14 +698,16 @@ insert
       
         
           
-          本文转自：https://www.javazhiyin.com/17912.html  。
-一：什么是RPC1.什么是RPC
-RPC是基于JDK动态代理。
-RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用
+          业务场景：
+在A服务器上有个oracle数据库里面有2个不用的用户权限：role1和role2,
+每个用户分别管理不同的表，role1下面有user表,role2下面有个city表。
+此时业务需要用到user表里的某个字段去联表查询city表，查询用户是属于那个地区的。
+解决方式：
+1.用role1
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/10/15/rpc/#more" rel="contents">
+            <a class="btn" href="/2020/02/25/oraclerole/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -756,7 +758,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/10/08/Lombok/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/02/25/tomcatupgrade/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -775,7 +777,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/08/Lombok/" itemprop="url">Lombok基本用法</a></h1>
+                <a class="post-title-link" href="/2020/02/25/tomcatupgrade/" itemprop="url">tomcat步骤及注意事项</a></h1>
         
 
         <div class="post-meta">
@@ -787,8 +789,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T15:51:16+08:00">
-                2019-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-25T15:28:36+08:00">
+                2020-02-25
               </time>
             
 
@@ -810,8 +812,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -849,12 +851,18 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          这里主要抒写下Lombok中许多常用的方法：首先引入相关依赖
-12345678910&lt;dependency&gt;    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;    &lt;artifactId&gt;lombok&lt;/artif
+          一：检测tomcat版本：1.直接找到tomcat中bin目录下的：version.sh运行：
+
+2.在执行version.sh时可以会提示如下错误:
+
+这是由于jdk版本不符合导致的。
+解决方法有很多比如：
+1、直接在tomcat中的server.xml直接jdk的路径（不推荐）
+2、修改系统环境
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/10/08/Lombok/#more" rel="contents">
+            <a class="btn" href="/2020/02/25/tomcatupgrade/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -905,7 +913,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/09/29/SpringBootMavenWeb/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/01/13/Elasticsearch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -924,7 +932,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/29/SpringBootMavenWeb/" itemprop="url">SpringBootMavenWeb，Maven中打包没有web.xml的Web项目</a></h1>
+                <a class="post-title-link" href="/2020/01/13/Elasticsearch/" itemprop="url">Elasticsearch</a></h1>
         
 
         <div class="post-meta">
@@ -936,8 +944,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-29T09:48:15+08:00">
-                2019-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T16:10:17+08:00">
+                2020-01-13
               </time>
             
 
@@ -959,8 +967,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -998,15 +1006,12 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          关于在mavne中package,SpringBootWeb项目可能出现如下的错误提示：
-
-那是因为在WEB-INF下找不到web.xml文件，
-那么此时的解决方法有很多我这里就只提供如下一种：即在Pom.xml文件中添加相关语句：
-12345678910111213141516171819&lt;
+          何为ElasticsearchElasticsearch是分布式搜索和分析引擎 .
+Elasticsearch为所有类型的数据提供实时搜索和分析。无论您是结构化文本还是非结构化文本，数字数据或地理空间数据，Elasticsearch都能以支持快速搜索的方式有效地对其进行存储和索引。您不仅可以进行简单
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/29/SpringBootMavenWeb/#more" rel="contents">
+            <a class="btn" href="/2020/01/13/Elasticsearch/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1057,7 +1062,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/09/27/sha1/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2020/01/07/elk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -1076,7 +1081,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/27/sha1/" itemprop="url">sha1签名方法</a></h1>
+                <a class="post-title-link" href="/2020/01/07/elk/" itemprop="url">elk</a></h1>
         
 
         <div class="post-meta">
@@ -1088,8 +1093,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T14:30:26+08:00">
-                2019-09-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-07T14:29:07+08:00">
+                2020-01-07
               </time>
             
 
@@ -1111,8 +1116,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -1150,14 +1155,14 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          这里主要简单讲一下sha1签名方法，相信接触微信端开发的人员，在调用微信公众号及小程序的部分接口时需要做sha1签名。
-虽然官方中有明显的说明但是还是有部分朋友还是会问到或这感到困惑，这里就详细给出一个demo。cp修改部分参数即可用。
-第一步：引入goole.guava架包
-123456789&l
+          ELK搭建（收集java日志）1.何为ELK：
+Elasticsearch是Elastic Stack核心的分布式搜索和分析引擎。
+Logstash和Beats有助于收集，聚合和丰富您的数据并将其存储在Elasticsearch中。
+Kibana，使您可以交互式地探索，可视化和共享对数据的见解，并管
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/27/sha1/#more" rel="contents">
+            <a class="btn" href="/2020/01/07/elk/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1208,7 +1213,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/09/27/SpringBootExternalTomcat/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/12/05/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -1227,7 +1232,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/27/SpringBootExternalTomcat/" itemprop="url">SpringBootWeb项目独立在tomact中运行</a></h1>
+                <a class="post-title-link" href="/2019/12/05/jvm/" itemprop="url">jvm</a></h1>
         
 
         <div class="post-meta">
@@ -1239,8 +1244,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T09:56:42+08:00">
-                2019-09-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T09:14:44+08:00">
+                2019-12-05
               </time>
             
 
@@ -1262,8 +1267,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -1301,12 +1306,12 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          SpringBootWeb项目独立在tomact中运行​     SpringBoot项目本身就内置了tomcat所以我们可以一键启动项目，但是在生产环境下我们还是习惯将项目放在独立的Tomact中运行，下面我来介绍如何将项目部署到第三方tomcat中运行。
-1.修改Pom文件中的packaging
+          浅谈Could not create the Java Virtual Machine.错误如下：
+12345Conflicting collector combinations in option list; please refer to the release notes for the co
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/27/SpringBootExternalTomcat/#more" rel="contents">
+            <a class="btn" href="/2019/12/05/jvm/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1357,7 +1362,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/09/24/SnowFlake/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/11/19/pageContext/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -1376,7 +1381,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/24/SnowFlake/" itemprop="url">分布式id生成器 SnowFlake</a></h1>
+                <a class="post-title-link" href="/2019/11/19/pageContext/" itemprop="url">jsp中的绝对路径${pageContext.request.contextPath}</a></h1>
         
 
         <div class="post-meta">
@@ -1388,8 +1393,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T15:04:07+08:00">
-                2019-09-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T10:11:29+08:00">
+                2019-11-19
               </time>
             
 
@@ -1411,8 +1416,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -1450,13 +1455,15 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          分布式id生成器简单讲解下二进制
-1.1 二进制概念
-123二进制是计算技术中广泛采用的一种数制。二进制数据是用0和1两个数码来表示的数。 它的基数为2，进位规则是“逢二进一”，借位规则是“借一当二”，由18世纪德国数理哲学大师莱布尼兹发现。 当前的计算机系统使用的基本上是二进制系统，数据在计算机中
+          ​    为啥写这边文章?我相信很多萌新在刚刚开发的时候，也许也和我一样在部署项目到其他环境时（比如：测试环境）打开页面会提示找不到相应的外部样式代码和图片等。那么如何解决请看下面的步骤解说：
+1.问题点如图：
+​    
+​    图上提示：找不到相应的图片文件，从而导致页面的图片样式没有生效。
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/24/SnowFlake/#more" rel="contents">
+            <a class="btn" href="/2019/11/19/pageContext/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1507,7 +1514,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/09/24/SpringBootFilter/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/11/18/MapDemo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -1526,7 +1533,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/24/SpringBootFilter/" itemprop="url">SpringBootFilter</a></h1>
+                <a class="post-title-link" href="/2019/11/18/MapDemo/" itemprop="url">Map多种用法</a></h1>
         
 
         <div class="post-meta">
@@ -1538,8 +1545,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T14:09:26+08:00">
-                2019-09-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T16:39:58+08:00">
+                2019-11-18
               </time>
             
 
@@ -1561,8 +1568,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -1600,12 +1607,17 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          关于SpringBoot中Filter的使用，此处以添加XSS注入，SQL注入过滤为demo可能需要的lib
-123456789&lt;dependency&gt;    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;    &lt;artifactId&g
+          前言：
+​    最近小编在写项目的时候碰到定义一些常用数据的问题，比如说颜色的常量有：白色、黑色、红色等等这样的话一般想到的是用：枚举类。但是我看项目中用的却是Map的另一个实现方式，所以引起了小编的好奇新大陆。那这么多废话赶快亮出代码
+
+
+1.常用的HashMap：
+
+这个Map的实现类Hash
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/24/SpringBootFilter/#more" rel="contents">
+            <a class="btn" href="/2019/11/18/MapDemo/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1656,7 +1668,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/09/09/springbootErrorPage/">
+    <link itemprop="mainEntityOfPage" href="http://17363959606.github.io/2019/11/14/dfCommand/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Je t 'aime">
@@ -1675,7 +1687,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/09/springbootErrorPage/" itemprop="url">springbootErrorPage</a></h1>
+                <a class="post-title-link" href="/2019/11/14/dfCommand/" itemprop="url">Linux中如何查看磁盘占用率及日志文件的删除</a></h1>
         
 
         <div class="post-meta">
@@ -1687,8 +1699,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T11:34:18+08:00">
-                2019-09-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T10:38:17+08:00">
+                2019-11-14
               </time>
             
 
@@ -1710,8 +1722,8 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/base/" itemprop="url" rel="index">
+                    <span itemprop="name">base</span>
                   </a>
                 </span>
 
@@ -1749,15 +1761,13 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
       
         
           
-          关于springBoot框架中全部异常页面的处理首先我们看一组官网数据截图：
+          ​    别问小编为什么写这篇文章，写这篇文章肯定是有原因的
 
-由于springBoot中自带相关错误信息的处理页面，如果我们不进行显现配置则会使用springBoot自带的错误展示页面。
-其实springBoot的全局处理页面的配置很简单，如上图在相关地址添加上相应的页面就行。
-下
+是这么回事，去年小编入职一家深圳的小型外包创业公司，当时给甲方（买过保险的大家可能会知道‘亚太财险’这家公司）做了一个小程序端的视频在线理赔功能。功能完成后在测试环境测了下没发现什么问题，只是觉得日志打印的内容有点多，当时小编也是刚刚出
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/09/springbootErrorPage/#more" rel="contents">
+            <a class="btn" href="/2019/11/14/dfCommand/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1799,7 +1809,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1843,7 +1853,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1854,7 +1864,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1865,7 +1875,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2407,7 +2417,7 @@ RPC是Remote Procedure Call的缩写，即远程过程调用，意思是可以�
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>

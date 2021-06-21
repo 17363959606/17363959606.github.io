@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="reids,">
+  <meta name="keywords" content="redis,">
 
 
 
@@ -95,36 +95,17 @@
 
 
 <meta name="description" content="一：reids的基础知识1.启动redis: ./reids.server /xx/xx/redis.conf 2.检测reids是否启动成功： ./reids.cli -p 6379  (6379为redis的默认端口号)  输入Ping恢复pong表示成功。 3.redis默认是16个库，select x (x表示索引 0-15)命令切换数据库  库的索引从0开始，select 1表示切换到第">
-<meta name="keywords" content="reids">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="reids">
+<meta property="og:title" content="redis知识">
 <meta property="og:url" content="http://17363959606.github.io/2020/06/16/reids/index.html">
 <meta property="og:site_name" content="静静同学的博客">
 <meta property="og:description" content="一：reids的基础知识1.启动redis: ./reids.server /xx/xx/redis.conf 2.检测reids是否启动成功： ./reids.cli -p 6379  (6379为redis的默认端口号)  输入Ping恢复pong表示成功。 3.redis默认是16个库，select x (x表示索引 0-15)命令切换数据库  库的索引从0开始，select 1表示切换到第">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/1.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/2.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/3.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/4.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/5.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/6.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/7.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/8.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/9.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/10.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/11.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/12.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/13.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/14.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/15.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/16.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/17.png">
-<meta property="og:image" content="http://17363959606.github.io/2020/06/16/reids/18.png">
-<meta property="og:updated_time" content="2020-06-28T07:16:54.127Z">
+<meta property="og:updated_time" content="2021-06-21T02:05:57.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="reids">
+<meta name="twitter:title" content="redis知识">
 <meta name="twitter:description" content="一：reids的基础知识1.启动redis: ./reids.server /xx/xx/redis.conf 2.检测reids是否启动成功： ./reids.cli -p 6379  (6379为redis的默认端口号)  输入Ping恢复pong表示成功。 3.redis默认是16个库，select x (x表示索引 0-15)命令切换数据库  库的索引从0开始，select 1表示切换到第">
-<meta name="twitter:image" content="http://17363959606.github.io/2020/06/16/reids/1.png">
 
 
 
@@ -159,7 +140,7 @@
 
 
 
-  <title>reids | 静静同学的博客</title>
+  <title>redis知识 | 静静同学的博客</title>
   
 
 
@@ -341,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">reids</h1>
+          <h1 class="post-title" itemprop="name headline">redis知识</h1>
         
 
         <div class="post-meta">
@@ -376,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/reids/" itemprop="url" rel="index">
-                    <span itemprop="name">reids</span>
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
                   </a>
                 </span>
 
@@ -415,15 +396,15 @@
       
         <h3 id="一：reids的基础知识"><a href="#一：reids的基础知识" class="headerlink" title="一：reids的基础知识"></a>一：reids的基础知识</h3><p>1.启动redis: <strong>./reids.server /xx/xx/redis.conf</strong></p>
 <p>2.检测reids是否启动成功： <strong>./reids.cli -p 6379</strong>  (6379为redis的默认端口号)</p>
-<img src="/2020/06/16/reids/1.png">
+
 <p>输入Ping恢复pong表示成功。</p>
 <p>3.redis默认是16个库，<strong>select x (x表示索引 0-15)</strong>命令切换数据库</p>
-<img src="/2020/06/16/reids/2.png">
+
 <p>库的索引从0开始，select 1表示切换到第二个库。</p>
 <p>redis的库数量可以在reids.conf文件中修改定义:如下图</p>
-<img src="/2020/06/16/reids/3.png">
+
 <p>4.<strong>dbsize</strong>命令查看当前数据库的key的数量，keys * 查询当前库所有的数据， keys k?查询当前库所有以k开头的数据</p>
-<img src="/2020/06/16/reids/4.png">
+
 <p>5.<strong>flushdb:清空当前库数据，flushall:清空全部库数据</strong></p>
 <h3 id="二-redis的五大数据类型"><a href="#二-redis的五大数据类型" class="headerlink" title="二.redis的五大数据类型"></a>二.redis的五大数据类型</h3><ol>
 <li>redis String (字符串)</li>
@@ -440,7 +421,7 @@
 <p>expire key 秒钟：为给定的key设置过期时间</p>
 <p>ttl key 查看还有多少秒过期，-1表示永不过期、-2表示已过期</p>
 <p>type key 查看你的Key是什么类型</p>
-<img src="/2020/06/16/reids/5.png">
+
 <p><strong>Redis 字符串(String) :</strong></p>
 <p>set/get/del/append/strlen  append k2 123 //在 k2后面最近123</p>
 <p>Incr/decr/incrby/decrby,一定要是数字才能进行加减</p>
@@ -451,28 +432,28 @@
 <p>getset(先get再set)</p>
 <p><strong>Redis列表（List）:</strong></p>
 <p>lpush/rpush/lrange</p>
-<img src="/2020/06/16/reids/6.png">
+
 <p>lpop/rpop出站。（从前面开始【正顺】/从后面开始【反顺】）</p>
 <p>lindex，按照索引下标获取元素（从上到下） lindex list01 1</p>
 <p>llen 长度</p>
 <p>lrem list删除n个value : lrem list01 1 3 (就是删除集合中的1个3)</p>
-<img src="/2020/06/16/reids/7.png">
+
 <p>ltrim list 开始index  接收index,截取指定范围的值然后赋值给key (就是截取集合中1-3索引的值)：list=1234 ,ltrim list 1 3 结果为：234</p>
 <p>rpoplpush 源列表 目的列表</p>
-<img src="/2020/06/16/reids/8.png">
+
 <p>lset key index value : 对集合指定的索引赋值</p>
 <p>linsert key before/after 值1 值2  把某个值插入到某个Key的前面或者后面</p>
-<img src="/2020/06/16/reids/9.png">
+
 <p><strong>Redis集合（Set）</strong></p>
 <p>sadd/smembers/sismember</p>
-<img src="/2020/06/16/reids/10.png">
+
 <p>scard ,获取集合里面有多少个元素</p>
 <p>srem key value 删除集合中的元素</p>
 <p>srandmember key 某个整数（随机出几个数）：srandmember set 3,在set这个集合中随机去除3个数据</p>
 <p>spop key 随机出栈 （比如：spop set01 即从set01中随便“移除”一个值出来）</p>
 <p>smove key1 key2  ，作用是将key1里面的某个‘移除值赋值’给key2</p>
 <p>sdiff：差集、sinter:交集、sunion:并集</p>
-<img src="/2020/06/16/reids/11.png">
+
 <p><strong>Redis哈希（Hash）</strong></p>
 <p>kv模式不变，但是v是一个键值对</p>
 <p>hset/hget/hmget/hgetall/hdel : hset user id 11:设置user里面的id为11</p>
@@ -480,22 +461,22 @@
 <p>hexists key 在key里面是否存在某个值的key (1/0)</p>
 <p>hkeys/hvals  单独获取hash里面的Key或value ： hkeys user</p>
 <p>hincrby/hincybyfloat</p>
-<img src="/2020/06/16/reids/12.png">
+
 <p>hsetnx : hsetnx user id 11(判断user里面是否存在id，存在则不出返回0，否则新增id 11,返回1)</p>
 <p><strong>Redis有序集合(zset)</strong></p>
 <p>在set基础上加了一个score值，之前set是 k1 v1 v2 v3</p>
 <p>现在zset是 k1 score1 v1 score2 v2</p>
 <p>zadd/zrange/zrange withscores</p>
-<img src="/2020/06/16/reids/13.png">
+
 <p>zrangebyscore key 开始score 结束score </p>
-<img src="/2020/06/16/reids/14.png">
+
 <p>“(“表示不包含，limit表示从第几个开始取值，取多少个</p>
 <p>zrem key ，某score下对应的value值，作用是删除元素</p>
 <p>zcard  获取长度</p>
 <p>zcount key score 区间， 获取区间大小</p>
 <p>zrank key values  ：获取下标值</p>
 <p>zscore key : 对应值获取对应分数（通过v 获取 score）</p>
-<img src="/2020/06/16/reids/15.png">
+
 <p>zrevrank key values 值 ：作用是逆序获取下标值</p>
 <p>zrevrange：作用是反转zset里面的，比如： 13 –》31</p>
 <p>zrevangebyscore key 和zrangebyscore 相反：zrevangebyscore key 90 60 ，zrangebyscore key 60 90</p>
@@ -525,7 +506,7 @@
 <p>​    dump.rdb</p>
 <p><strong>配置位置：</strong></p>
 <p>​    配置文件中的：<strong>Snapshot</strong></p>
-<p>​    <img src="/2020/06/16/reids/16.png"></p>
+<p>​    </p>
 <p><strong>含义：</strong></p>
 <p>三种行为触发一个就执行保存操作：</p>
 <ol>
@@ -543,7 +524,7 @@
 </li>
 </ol>
 <p>假如有些数据非常重要更改后要求立马备份，那么就直接执行save，如图：</p>
-<img src="/2020/06/16/reids/17.png">
+
 <p><strong>如何停止：</strong></p>
 <p>​    <strong>动态所有停止RDB保存规则的方法：redis-lic config set save “”</strong></p>
 <p>2：aof (Append Only File)</p>
@@ -559,7 +540,7 @@
 <p>replicaof masterip masterport  – masterid:主redis的地址，masterport：主redis的端口</p>
 <p>masterauth master-password  – 如果主机有设置密码，那么这个地方一定要写上主机的密码</p>
 <p>配置后启动reids服务查看如下</p>
-<img src="/2020/06/16/reids/18.png">
+
 <p>role:master 表主服务器，slave表从服务器</p>
 <p>connected_slaves:1 表示有1个从服务器连接</p>
 <p>等等信息</p>
@@ -591,6 +572,55 @@
 <p><em>**</em>sentinel failover-timeout mymaster 180000</p>
 <p>指定故障转移超时（毫秒）默认是3分钟</p>
 <p><strong>从服务的配置和主服务器配置一样，但port 要改。且端口一定要开放</strong></p>
+<h3 id="八：内存淘汰策略"><a href="#八：内存淘汰策略" class="headerlink" title="八：内存淘汰策略"></a>八：内存淘汰策略</h3><p>redis的数据已经设置了TTL（过期删除策略），并不是过期时间一到就会立马删除的。这个需要从redis的过期策略说起：</p>
+<p><strong>过期策略</strong></p>
+<p>1.定时删除：</p>
+<p>redis会为每个设置了过期时间的key设置一个定时器，只要过期时间一到定时器就会立马去删除数据，</p>
+<p>这样做的好处是：内存利用率很好，但是很耗cpu.(10W+的数据10W+的定时器，那cpu还不累死)</p>
+<p>Redis 默认会每秒进行十次过期扫描，过期扫描不会遍历过期字典中所有的 key，而是采用了一种简单的贪心策略。</p>
+<ol>
+<li>从过期字典中随机 20 个 key；</li>
+<li>删除这 20 个 key 中已经过期的 key；</li>
+<li>如果过期的 key 比率超过 1/4，那就重复步骤 1；</li>
+</ol>
+<p>同时，为了保证过期扫描不会出现循环过度，导致线程卡死现象，算法还增加了扫描时间的上限，默认不会超过 25ms。</p>
+<p>如果某一时刻，有大量key同时过期，Redis 会持续扫描过期字典，造成客户端响应卡顿，因此设置过期时间时，就尽量避免这个问题，在设置过期时间时，可以给过期时间设置一个随机范围，避免同一时刻过期。</p>
+<p>redis的定时任务默认是1s执行10次（100ms一次，值越大说明刷新频率越快，最Redis性能损耗也越大），如果要修改这个值，可以在redis.conf中修改hz的值。</p>
+<p>redis.conf中，hz默认设为10，提高它的值将会占用更多的cpu，当然相应的redis将会更快的处理同时到期的许多key，以及更精确的去处理超时。 hz的取值范围是1~500，通常不建议超过100，只有在请求延时非常低的情况下可以将值提升到100。</p>
+<p>1.2 单线程的redis，如何知道要运行定时任务？</p>
+<p>redis是单线程的，线程不但要处理定时任务，还要处理客户端请求，线程不能阻塞在定时任务或处理客户端请求上，那么，redis是如何知道何时该运行定时任务的呢？</p>
+<p>Redis 的定时任务会记录在一个称为最小堆的数据结构中。这个堆中，最快要执行的任务排在堆的最上方。在每个循环周期，Redis 都会将最小堆里面已经到点的任务立即进行处理。处理完毕后，将最快要执行的任务还需要的时间记录下来，这个时间就是接下来处理客户端请求的最大时长，若达到了该时长，则暂时不处理客户端请求而去运行定时任务。</p>
+<p>2.惰性删除：</p>
+<p>redis中设置了过期时间的key不会立马去删除，而是在下一次被访问的时候redis去判断这个key是否过期，过期则不会返回任何数据，没过去则返回数据。</p>
+<p>这样做的好处是：cpu利用很有好，内存利用率就没有那么友好了。</p>
+<p>3.定期删除</p>
+<p>这个过期策略就是上面2中方法的折中方案，redis会将每个设置了过期时间的key放入到一个独立的字典中，以后会定期的遍历整个字典来删除到期的key，redis默认会每秒进行10次过期扫描，</p>
+<p>过期扫描不会遍历过期字典中所有的key，而是采用一个简单的贪心策略。</p>
+<p>1.从过期字典中随机20个key;</p>
+<p>2.删除这20个key中已经过期的key;</p>
+<p>3.如果过期的key比率超过了1/4.那就重复步骤1</p>
+<p>redis默认是每隔 100ms就随机抽取一些设置了过期时间的key，检查其是否过期，如果过期就删除。注意这里是随机抽取的。为什么要随机呢？你想一想假如 redis 存了几十万个 key ，每隔100ms就遍历所有的设置过期时间的 key 的话，就会给 CPU 带来很大的负载。 </p>
+<p><strong>过期策略存在的问题:</strong></p>
+<p>1.定时策略很耗cpu基本不会使用</p>
+<p>2.惰性删除耗内存，如果有些过期的key一直没有被返回就会一直占用内存</p>
+<p>3.定期删除，方法1，2的折中方案，但是也会存在内存问题即：有些过期的key一直没有被随机删除到。</p>
+<p>正是基于这类问题而产生了一个保底方案那就是“内存淘汰策略”。</p>
+<p><strong>内存淘汰策略：</strong></p>
+<p>1.noeviction:当内存使用超过配置的时候会返回错误，不会驱逐任何键。（默认使用）</p>
+<p>2.allkeys-lru:加入键的时候，如果过限，首先通过LRU算法淘汰掉最久没有使用的键。</p>
+<p>3.volatile-lru:加入键的时候如果过限，首先从设置了过期时间的键集合中淘汰掉最久没有使用的键</p>
+<p>4.allkeys-random:加入键的时候如果过限，从所有key随机删除</p>
+<p>5.volatile-random:加入键的时候如果过限，从过期键的集合中随机淘汰</p>
+<p>6.volatile-ttl:从配置了过期时间的键中淘汰马上就要过期的键</p>
+<p>7.volatile-lfu:从所有配置了过期时间的键中淘汰使用频率最少的键</p>
+<p>8.allkeys-lfu:从所有键中淘汰使用频率最少的键</p>
+<p>内存策略怎么配置？默认大小是多少？</p>
+<h2 id="Maxmemory-配置指令"><a href="#Maxmemory-配置指令" class="headerlink" title="Maxmemory 配置指令"></a>Maxmemory 配置指令</h2><p>所述<code>maxmemory</code>配置指令，以便用于配置Redis的使用的存储器的指定量的数据集。可以使用<code>redis.conf</code>文件设置配置指令，或者稍后在运行时使用<a href="https://redis.io/commands/config-set" target="_blank" rel="noopener">CONFIG SET</a>命令。</p>
+<p>例如，为了配置 100 兆字节的内存限制，可以在<code>redis.conf</code>文件中使用以下指令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory 100mb</span><br></pre></td></tr></table></figure>
+<p>设置<code>maxmemory</code>为零会导致没有内存限制。这是 64 位系统的默认行为，而 32 位系统使用 3GB 的隐式内存限制。</p>
+<p>当达到指定的内存量时，可以在不同的行为中进行选择，称为<strong>策略</strong>。Redis 可以只为可能导致使用更多内存的命令返回错误，或者它可以逐出一些旧数据以便在每次添加新数据时返回到指定的限制。</p>
+<h2 id="驱逐政策"><a href="#驱逐政策" class="headerlink" title="驱逐政策"></a>驱逐政策</h2><p>当<code>maxmemory</code>达到限制时，Redis 的确切行为是使用<code>maxmemory-policy</code>配置指令配置的。</p>
 <p>​    </p>
 
       
@@ -609,7 +639,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/reids/" rel="tag"># reids</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -632,8 +662,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/29/dockerOracle/" rel="prev" title="docker创建oracle">
-                docker创建oracle <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/16/redis/" rel="prev" title="reids">
+                reids <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -709,7 +739,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -720,7 +750,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -731,7 +761,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -784,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一：reids的基础知识"><span class="nav-number">1.</span> <span class="nav-text">一：reids的基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-redis的五大数据类型"><span class="nav-number">2.</span> <span class="nav-text">二.redis的五大数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-redis数据类型的常用命令"><span class="nav-number">3.</span> <span class="nav-text">三.redis数据类型的常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四：redis配置文件介绍"><span class="nav-number">4.</span> <span class="nav-text">四：redis配置文件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五：redis的持久化"><span class="nav-number">5.</span> <span class="nav-text">五：redis的持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六：redis的主从复制：（一主二从，主写从读）"><span class="nav-number">6.</span> <span class="nav-text">六：redis的主从复制：（一主二从，主写从读）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#REPLICATION"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">REPLICATION</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#七：哨兵模式："><span class="nav-number">7.</span> <span class="nav-text">七：哨兵模式：</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一：reids的基础知识"><span class="nav-number">1.</span> <span class="nav-text">一：reids的基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-redis的五大数据类型"><span class="nav-number">2.</span> <span class="nav-text">二.redis的五大数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-redis数据类型的常用命令"><span class="nav-number">3.</span> <span class="nav-text">三.redis数据类型的常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四：redis配置文件介绍"><span class="nav-number">4.</span> <span class="nav-text">四：redis配置文件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五：redis的持久化"><span class="nav-number">5.</span> <span class="nav-text">五：redis的持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六：redis的主从复制：（一主二从，主写从读）"><span class="nav-number">6.</span> <span class="nav-text">六：redis的主从复制：（一主二从，主写从读）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#REPLICATION"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">REPLICATION</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#七：哨兵模式："><span class="nav-number">7.</span> <span class="nav-text">七：哨兵模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八：内存淘汰策略"><span class="nav-number">8.</span> <span class="nav-text">八：内存淘汰策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maxmemory-配置指令"><span class="nav-number"></span> <span class="nav-text">Maxmemory 配置指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#驱逐政策"><span class="nav-number"></span> <span class="nav-text">驱逐政策</span></a></li></div>
             
 
           </div>
@@ -1289,7 +1319,7 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":300,"height":500},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>
